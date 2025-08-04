@@ -33,13 +33,20 @@ public class Nalaz implements ApstraktniDomenskiObjekat {
     }
 
     public Nalaz(int idNalaz, Date datumIzdavanja, String opisNalaza, double ukupnaCena, Fizijatar fizijatar, Pacijent pacijent, List<StavkaNalaza> listaStavki) {
-        this.idNalaz = idNalaz;
-        this.datumIzdavanja = datumIzdavanja;
-        this.opisNalaza = opisNalaza;
-        this.ukupnaCena = ukupnaCena;
-        this.fizijatar = fizijatar;
-        this.pacijent = pacijent;
-        this.listaStavki = listaStavki;
+//        this.idNalaz = idNalaz;
+//        this.datumIzdavanja = datumIzdavanja;
+//        this.opisNalaza = opisNalaza;
+//        this.ukupnaCena = ukupnaCena;
+//        this.fizijatar = fizijatar;
+//        this.pacijent = pacijent;
+//        this.listaStavki = listaStavki;
+    	setIdNalaz(idNalaz);
+    	setDatumIzdavanja(datumIzdavanja);
+    	setOpisNalaza(opisNalaza);
+    	setUkupnaCena(ukupnaCena);
+    	setFizijatar(fizijatar);
+    	setPacijent(pacijent);
+    	setListaStavki(listaStavki);
     }
 
     public int getIdNalaz() {
@@ -47,6 +54,9 @@ public class Nalaz implements ApstraktniDomenskiObjekat {
     }
 
     public void setIdNalaz(int idNalaz) {
+    	if(idNalaz<0) {
+    		throw new IllegalArgumentException("id nalaza ne sme biti manji od 0");
+    	}
         this.idNalaz = idNalaz;
     }
 
@@ -55,6 +65,12 @@ public class Nalaz implements ApstraktniDomenskiObjekat {
     }
 
     public void setDatumIzdavanja(Date datumIzdavanja) {
+    	if(datumIzdavanja==null) {
+    		throw new NullPointerException("datum izdavanja nalaza ne sme biti null");
+    	}
+    	if(datumIzdavanja.getTime()>new Date().getTime()) {
+    		throw new IllegalArgumentException("datum izdavanja nalaza ne sme biti u buducnosti");
+    	}
         this.datumIzdavanja = datumIzdavanja;
     }
 
@@ -63,6 +79,12 @@ public class Nalaz implements ApstraktniDomenskiObjekat {
     }
 
     public void setOpisNalaza(String opisNalaza) {
+    	if(opisNalaza==null) {
+    		throw new NullPointerException("opis nalaza ne sme biti null");
+    	}
+    	if(opisNalaza.isEmpty()) {
+    		throw new IllegalArgumentException("opis nalaza ne sme biti prazan");
+    	}
         this.opisNalaza = opisNalaza;
     }
 
@@ -71,6 +93,9 @@ public class Nalaz implements ApstraktniDomenskiObjekat {
     }
 
     public void setUkupnaCena(double ukupnaCena) {
+    	if(ukupnaCena<0) {
+    		throw new IllegalArgumentException("ukupna cena nalaza ne sme biti manja od 0");
+    	}
         this.ukupnaCena = ukupnaCena;
     }
 
@@ -79,6 +104,9 @@ public class Nalaz implements ApstraktniDomenskiObjekat {
     }
 
     public void setFizijatar(Fizijatar fizijatar) {
+    	if(fizijatar==null) {
+    		throw new NullPointerException("fizijatar ne sme biti null");
+    	}
         this.fizijatar = fizijatar;
     }
 
@@ -87,6 +115,9 @@ public class Nalaz implements ApstraktniDomenskiObjekat {
     }
 
     public void setPacijent(Pacijent pacijent) {
+    	if(pacijent==null) {
+    		throw new NullPointerException("pacijent ne sme biti null");
+    	}
         this.pacijent = pacijent;
     }
 
@@ -95,47 +126,36 @@ public class Nalaz implements ApstraktniDomenskiObjekat {
     }
 
     public void setListaStavki(List<StavkaNalaza> listaStavki) {
+    	if(listaStavki==null) {
+    		throw new NullPointerException("lista stavki ne sme biti null");
+    	}
+    	if(listaStavki.isEmpty()) {
+    		throw new IllegalArgumentException("lista stavki nalaza ne sme biti prazna");
+    	}
         this.listaStavki = listaStavki;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        return hash;
-    }
+    
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Nalaz other = (Nalaz) obj;
-        if (this.idNalaz != other.idNalaz) {
-            return false;
-        }
-        if (Double.doubleToLongBits(this.ukupnaCena) != Double.doubleToLongBits(other.ukupnaCena)) {
-            return false;
-        }
-        if (!Objects.equals(this.opisNalaza, other.opisNalaza)) {
-            return false;
-        }
-        if (!Objects.equals(this.datumIzdavanja, other.datumIzdavanja)) {
-            return false;
-        }
-        if (!Objects.equals(this.fizijatar, other.fizijatar)) {
-            return false;
-        }
-        if (!Objects.equals(this.pacijent, other.pacijent)) {
-            return false;
-        }
-        return Objects.equals(this.listaStavki, other.listaStavki);
-    }
+	public int hashCode() {
+		return Objects.hash(datumIzdavanja, fizijatar, idNalaz, listaStavki, opisNalaza, pacijent, ukupnaCena);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Nalaz other = (Nalaz) obj;
+		return Objects.equals(datumIzdavanja, other.datumIzdavanja) && Objects.equals(fizijatar, other.fizijatar)
+				&& idNalaz == other.idNalaz && Objects.equals(listaStavki, other.listaStavki)
+				&& Objects.equals(opisNalaza, other.opisNalaza) && Objects.equals(pacijent, other.pacijent)
+				&& Double.doubleToLongBits(ukupnaCena) == Double.doubleToLongBits(other.ukupnaCena);
+	}
 
     @Override
     public String toString() {
@@ -182,10 +202,10 @@ public class Nalaz implements ApstraktniDomenskiObjekat {
         return "nalaz.idNalaz="+idNalaz;
     }
 
-    @Override
-    public ApstraktniDomenskiObjekat vratiObjekatIzRS(ResultSet rs) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+//    @Override
+//    public ApstraktniDomenskiObjekat vratiObjekatIzRS(ResultSet rs) throws Exception {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
 
     @Override
     public String vratiVrednostiZaIzmenu() {

@@ -83,26 +83,24 @@ public class Fizijatar_specijalista implements ApstraktniDomenskiObjekat {
         this.datumIzdavanja = datumIzdavanja;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        return hash;
-    }
+    
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Fizijatar_specijalista other = (Fizijatar_specijalista) obj;
-        return Objects.equals(this.specijalizacija, other.specijalizacija);
-    }
+	public int hashCode() {
+		return Objects.hash(specijalizacija);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Fizijatar_specijalista other = (Fizijatar_specijalista) obj;
+		return Objects.equals(specijalizacija, other.specijalizacija);
+	}
 
     
 
@@ -148,10 +146,10 @@ public class Fizijatar_specijalista implements ApstraktniDomenskiObjekat {
         return "fizijatar_specijalista.idSertifikat="+idSertifikat;
     }
 
-    @Override
-    public ApstraktniDomenskiObjekat vratiObjekatIzRS(ResultSet rs) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+//    @Override
+//    public ApstraktniDomenskiObjekat vratiObjekatIzRS(ResultSet rs) throws Exception {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
 
     @Override
     public String vratiVrednostiZaIzmenu() {

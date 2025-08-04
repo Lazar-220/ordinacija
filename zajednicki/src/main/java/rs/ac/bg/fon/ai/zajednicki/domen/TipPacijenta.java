@@ -70,8 +70,7 @@ public class TipPacijenta implements ApstraktniDomenskiObjekat {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        return hash;
+    	return Objects.hash(starosnaDob, pol);
     }
 
     @Override
@@ -137,10 +136,10 @@ public class TipPacijenta implements ApstraktniDomenskiObjekat {
         return "tip_pacijenta.idTipPacijenta="+idTipPacijenta;
     }
 
-    @Override
-    public ApstraktniDomenskiObjekat vratiObjekatIzRS(ResultSet rs) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+//    @Override
+//    public ApstraktniDomenskiObjekat vratiObjekatIzRS(ResultSet rs) throws Exception {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
 
     @Override
     public String vratiVrednostiZaIzmenu() {

@@ -70,32 +70,25 @@ public class Specijalizacija implements ApstraktniDomenskiObjekat {
         this.institucija = institucija;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        return hash;
-    }
+    
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Specijalizacija other = (Specijalizacija) obj;
-        if (this.idSpecijalizacija != other.idSpecijalizacija) {
-            return false;
-        }
-        if (!Objects.equals(this.naziv, other.naziv)) {
-            return false;
-        }
-        return Objects.equals(this.institucija, other.institucija);
-    }
+	public int hashCode() {
+		return Objects.hash(idSpecijalizacija, institucija, naziv);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Specijalizacija other = (Specijalizacija) obj;
+		return idSpecijalizacija == other.idSpecijalizacija && Objects.equals(institucija, other.institucija)
+				&& Objects.equals(naziv, other.naziv);
+	}
 
     @Override
     public String toString() {
@@ -138,10 +131,10 @@ public class Specijalizacija implements ApstraktniDomenskiObjekat {
         return "specijalizacija.idSpecijalizacija="+idSpecijalizacija;
     }
 
-    @Override
-    public ApstraktniDomenskiObjekat vratiObjekatIzRS(ResultSet rs) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+//    @Override
+//    public ApstraktniDomenskiObjekat vratiObjekatIzRS(ResultSet rs) throws Exception {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
 
     @Override
     public String vratiVrednostiZaIzmenu() {

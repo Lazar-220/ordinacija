@@ -88,8 +88,7 @@ public class Terapija implements ApstraktniDomenskiObjekat {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        return hash;
+    	return Objects.hash(idTerapija, cena, naziv,opis);
     }
 
     @Override
@@ -157,10 +156,10 @@ public class Terapija implements ApstraktniDomenskiObjekat {
         return "terapija.idTerapija="+idTerapija;
     }
 
-    @Override
-    public ApstraktniDomenskiObjekat vratiObjekatIzRS(ResultSet rs) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+//    @Override
+//    public ApstraktniDomenskiObjekat vratiObjekatIzRS(ResultSet rs) throws Exception {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
 
     @Override
     public String vratiVrednostiZaIzmenu() {

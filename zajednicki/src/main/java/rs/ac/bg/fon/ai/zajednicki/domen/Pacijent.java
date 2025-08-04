@@ -108,38 +108,25 @@ public class Pacijent implements ApstraktniDomenskiObjekat {
         this.tipPacijenta = tipPacijenta;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        return hash;
-    }
+    
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Pacijent other = (Pacijent) obj;
-        if (this.idPacijent != other.idPacijent) {
-            return false;
-        }
-        if (!Objects.equals(this.ime, other.ime)) {
-            return false;
-        }
-        if (!Objects.equals(this.prezime, other.prezime)) {
-            return false;
-        }
-        if (!Objects.equals(this.email, other.email)) {
-            return false;
-        }
-        return Objects.equals(this.tipPacijenta, other.tipPacijenta);
-    }
+	public int hashCode() {
+		return Objects.hash(email, idPacijent, ime, prezime, tipPacijenta);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Pacijent other = (Pacijent) obj;
+		return Objects.equals(email, other.email) && idPacijent == other.idPacijent && Objects.equals(ime, other.ime)
+				&& Objects.equals(prezime, other.prezime) && Objects.equals(tipPacijenta, other.tipPacijenta);
+	}
 
     @Override
     public String toString() {
@@ -184,10 +171,10 @@ public class Pacijent implements ApstraktniDomenskiObjekat {
         return "pacijent.idPacijent="+idPacijent;
     }
 
-    @Override
-    public ApstraktniDomenskiObjekat vratiObjekatIzRS(ResultSet rs) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+//    @Override
+//    public ApstraktniDomenskiObjekat vratiObjekatIzRS(ResultSet rs) throws Exception {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
 
     @Override
     public String vratiVrednostiZaIzmenu() {

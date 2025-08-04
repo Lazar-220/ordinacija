@@ -104,30 +104,24 @@ public class Fizijatar implements ApstraktniDomenskiObjekat {
     	}
         this.sifra = sifra;
     }
+    
 
     @Override
-    public int hashCode() {
-        int hash = 7;
-        return hash;
-    }
+	public int hashCode() {
+		return Objects.hash(korisnickoIme, sifra);
+	}
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Fizijatar other = (Fizijatar) obj;
-        if (!Objects.equals(this.korisnickoIme, other.korisnickoIme)) {
-            return false;
-        }
-        return Objects.equals(this.sifra, other.sifra);
-    }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Fizijatar other = (Fizijatar) obj;
+		return Objects.equals(korisnickoIme, other.korisnickoIme) && Objects.equals(sifra, other.sifra);
+	}
 
     
 
@@ -175,10 +169,10 @@ public class Fizijatar implements ApstraktniDomenskiObjekat {
         return "fizijatar.idFizijatra="+idFizijatra;
     }
 
-    @Override
-    public ApstraktniDomenskiObjekat vratiObjekatIzRS(ResultSet rs) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+//    @Override
+//    public ApstraktniDomenskiObjekat vratiObjekatIzRS(ResultSet rs) throws Exception {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
 
     @Override
     public String vratiVrednostiZaIzmenu() {
