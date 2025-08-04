@@ -23,9 +23,12 @@ public class Specijalizacija implements ApstraktniDomenskiObjekat {
     }
 
     public Specijalizacija(int idSpecijalizacija, String naziv, String institucija) {
-        this.idSpecijalizacija = idSpecijalizacija;
-        this.naziv = naziv;
-        this.institucija = institucija;
+//        this.idSpecijalizacija = idSpecijalizacija;
+//        this.naziv = naziv;
+//        this.institucija = institucija;
+    	setIdSpecijalizacija(idSpecijalizacija);
+    	setInstitucija(institucija);
+    	setNaziv(naziv);
     }
 
     public int getIdSpecijalizacija() {
@@ -33,6 +36,9 @@ public class Specijalizacija implements ApstraktniDomenskiObjekat {
     }
 
     public void setIdSpecijalizacija(int idSpecijalizacija) {
+    	if(idSpecijalizacija<0) {
+    		throw new IllegalArgumentException("id specijalizacije ne sme biti manji od 0");
+    	}
         this.idSpecijalizacija = idSpecijalizacija;
     }
 
@@ -41,6 +47,12 @@ public class Specijalizacija implements ApstraktniDomenskiObjekat {
     }
 
     public void setNaziv(String naziv) {
+    	if(naziv==null) {
+    		throw new NullPointerException("naziv specijalizacije ne sme biti null");
+    	}
+    	if(naziv.isEmpty()) {
+    		throw new IllegalArgumentException("naziv specijalizacije ne sme biti prazan");
+    	}
         this.naziv = naziv;
     }
 
@@ -49,6 +61,12 @@ public class Specijalizacija implements ApstraktniDomenskiObjekat {
     }
 
     public void setInstitucija(String institucija) {
+    	if(naziv==null) {
+    		throw new NullPointerException("institucija gde je obavljena specijalizacija ne sme biti null");
+    	}
+    	if(naziv.isEmpty()) {
+    		throw new IllegalArgumentException("institucija gde je obavljena specijalizacija ne sme biti prazna");
+    	}
         this.institucija = institucija;
     }
 

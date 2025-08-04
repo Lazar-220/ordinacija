@@ -26,9 +26,13 @@ public class TipPacijenta implements ApstraktniDomenskiObjekat {
     }
 
     public TipPacijenta(int idTipPacijenta, StarosnaDob starosnaDob, Pol pol) {
-        this.idTipPacijenta = idTipPacijenta;
-        this.starosnaDob = starosnaDob;
-        this.pol = pol;
+//        this.idTipPacijenta = idTipPacijenta;
+//        this.starosnaDob = starosnaDob;
+//        this.pol = pol;
+    	setIdTipPacijenta(idTipPacijenta);
+    	setPol(pol);
+    	setStarosnaDob(starosnaDob);
+    	
     }
 
     public int getIdTipPacijenta() {
@@ -36,6 +40,9 @@ public class TipPacijenta implements ApstraktniDomenskiObjekat {
     }
 
     public void setIdTipPacijenta(int idTipPacijenta) {
+    	if(idTipPacijenta<0) {
+    		throw new IllegalArgumentException("id tipa pacijenta ne sme biti manji od 0");
+    	}
         this.idTipPacijenta = idTipPacijenta;
     }
 
@@ -44,6 +51,9 @@ public class TipPacijenta implements ApstraktniDomenskiObjekat {
     }
 
     public void setStarosnaDob(StarosnaDob starosnaDob) {
+    	if(starosnaDob==null) {
+    		throw new NullPointerException("starosna dob pacijenta ne sme biti null");
+    	}
         this.starosnaDob = starosnaDob;
     }
 
@@ -52,6 +62,9 @@ public class TipPacijenta implements ApstraktniDomenskiObjekat {
     }
 
     public void setPol(Pol pol) {
+    	if(pol==null) {
+    		throw new NullPointerException("pol pacijenta ne sme biti null");
+    	}
         this.pol = pol;
     }
 

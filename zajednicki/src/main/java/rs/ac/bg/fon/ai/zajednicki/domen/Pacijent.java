@@ -29,11 +29,16 @@ public class Pacijent implements ApstraktniDomenskiObjekat {
     }
 
     public Pacijent(int idPacijent, String ime, String prezime, String email, TipPacijenta tipPacijenta) {
-        this.idPacijent = idPacijent;
-        this.ime = ime;
-        this.prezime = prezime;
-        this.email = email;
-        this.tipPacijenta = tipPacijenta;
+//        this.idPacijent = idPacijent;
+//        this.ime = ime;
+//        this.prezime = prezime;
+//        this.email = email;
+//        this.tipPacijenta = tipPacijenta;
+    	setIdPacijent(idPacijent);
+    	setIme(ime);
+    	setPrezime(prezime);
+    	setEmail(email);
+    	setTipPacijenta(tipPacijenta);
     }
 
     
@@ -43,6 +48,9 @@ public class Pacijent implements ApstraktniDomenskiObjekat {
     }
 
     public void setIdPacijent(int idPacijent) {
+    	if(idPacijent<0) {
+    		throw new IllegalArgumentException("id pacijenta ne sme biti manji od 0");
+    	}
         this.idPacijent = idPacijent;
     }
 
@@ -51,6 +59,12 @@ public class Pacijent implements ApstraktniDomenskiObjekat {
     }
 
     public void setIme(String ime) {
+    	if(ime==null) {
+    		throw new NullPointerException("ime pacijenta ne sme biti null");
+    	}
+    	if(ime.isEmpty()) {
+    		throw new IllegalArgumentException("ime pacijenta ne sme biti prazno");
+    	}
         this.ime = ime;
     }
 
@@ -59,6 +73,12 @@ public class Pacijent implements ApstraktniDomenskiObjekat {
     }
 
     public void setPrezime(String prezime) {
+    	if(prezime==null) {
+    		throw new NullPointerException("prezime pacijenta ne sme biti null");
+    	}
+    	if(prezime.isEmpty()) {
+    		throw new IllegalArgumentException("prezime pacijenta ne sme biti prazno");
+    	}
         this.prezime = prezime;
     }
 
@@ -67,14 +87,24 @@ public class Pacijent implements ApstraktniDomenskiObjekat {
     }
 
     public void setEmail(String email) {
+    	if(email==null) {
+    		throw new NullPointerException("email pacijenta ne sme biti null");
+    	}
+    	if(email.isEmpty()) {
+    		throw new IllegalArgumentException("email pacijenta ne sme biti prazan");
+    	}
         this.email = email;
     }
 
     public TipPacijenta getTipPacijenta() {
+    	
         return tipPacijenta;
     }
 
     public void setTipPacijenta(TipPacijenta tipPacijenta) {
+    	if(tipPacijenta==null) {
+    		throw new NullPointerException("tip pacijenta ne sme biti null");
+    	}
         this.tipPacijenta = tipPacijenta;
     }
 

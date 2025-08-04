@@ -26,10 +26,14 @@ public class Fizijatar_specijalista implements ApstraktniDomenskiObjekat {
     }
 
     public Fizijatar_specijalista(int idSertifikat, Fizijatar fizijatar, Specijalizacija specijalizacija, Date datumIzdavanja) {
-        this.idSertifikat = idSertifikat;
-        this.fizijatar = fizijatar;
-        this.specijalizacija = specijalizacija;
-        this.datumIzdavanja = datumIzdavanja;
+//        this.idSertifikat = idSertifikat;
+//        this.fizijatar = fizijatar;
+//        this.specijalizacija = specijalizacija;
+//        this.datumIzdavanja = datumIzdavanja;
+    	setIdSertifikat(idSertifikat);
+    	setFizijatar(fizijatar);
+    	setSpecijalizacija(specijalizacija);
+    	setDatumIzdavanja(datumIzdavanja);
     }
 
     public int getIdSertifikat() {
@@ -37,6 +41,9 @@ public class Fizijatar_specijalista implements ApstraktniDomenskiObjekat {
     }
 
     public void setIdSertifikat(int idSertifikat) {
+    	if(idSertifikat<0) {
+    		throw new IllegalArgumentException("id sertifikata ne sme biti manji od 0");
+    	}
         this.idSertifikat = idSertifikat;
     }
 
@@ -45,6 +52,9 @@ public class Fizijatar_specijalista implements ApstraktniDomenskiObjekat {
     }
 
     public void setFizijatar(Fizijatar fizijatar) {
+    	if(fizijatar==null) {
+    		throw new NullPointerException("fizijatar ne sme biti null");
+    	}
         this.fizijatar = fizijatar;
     }
 
@@ -53,6 +63,9 @@ public class Fizijatar_specijalista implements ApstraktniDomenskiObjekat {
     }
 
     public void setSpecijalizacija(Specijalizacija specijalizacija) {
+    	if(specijalizacija==null) {
+    		throw new NullPointerException("specijalizacija ne sme biti null");
+    	}
         this.specijalizacija = specijalizacija;
     }
 
@@ -61,6 +74,12 @@ public class Fizijatar_specijalista implements ApstraktniDomenskiObjekat {
     }
 
     public void setDatumIzdavanja(Date datumIzdavanja) {
+    	if(datumIzdavanja==null) {
+    		throw new NullPointerException("datum izdavanja sertifikata ne sme biti null");
+    	}
+    	if(datumIzdavanja.getTime()>new Date().getTime()) {
+    		throw new IllegalArgumentException("datum izdavanja sertifikata ne sme biti u buducnosti");
+    	}
         this.datumIzdavanja = datumIzdavanja;
     }
 

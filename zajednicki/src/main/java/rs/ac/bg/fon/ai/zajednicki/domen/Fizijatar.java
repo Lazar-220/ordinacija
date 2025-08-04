@@ -26,11 +26,16 @@ public class Fizijatar implements ApstraktniDomenskiObjekat {
     }
 
     public Fizijatar(int idFizijatra, String ime, String prezime, String korisnickoIme, String sifra) {
-        this.idFizijatra = idFizijatra;
-        this.ime = ime;
-        this.prezime = prezime;
-        this.korisnickoIme = korisnickoIme;
-        this.sifra = sifra;
+//        this.idFizijatra = idFizijatra;
+//        this.ime = ime;
+//        this.prezime = prezime;
+//        this.korisnickoIme = korisnickoIme;
+//        this.sifra = sifra;
+    	setIdFizijatra(idFizijatra);
+    	setIme(ime);
+    	setPrezime(prezime);
+    	setKorisnickoIme(korisnickoIme);
+    	setSifra(sifra);
     }
     
     public int getIdFizijatra() {
@@ -38,6 +43,9 @@ public class Fizijatar implements ApstraktniDomenskiObjekat {
     }
 
     public void setIdFizijatra(int idFizijatra) {
+    	if(idFizijatra<0) {
+    		throw new IllegalArgumentException("id fizijatra ne sme biti manji od 0");
+    	}
         this.idFizijatra = idFizijatra;
     }
 
@@ -46,6 +54,12 @@ public class Fizijatar implements ApstraktniDomenskiObjekat {
     }
 
     public void setIme(String ime) {
+    	if(ime==null) {
+    		throw new NullPointerException("ime fizijatra ne sme biti null");
+    	}
+    	if(ime.isEmpty()) {
+    		throw new IllegalArgumentException("ime fizijatra ne sme biti prazno");
+    	}
         this.ime = ime;
     }
 
@@ -54,6 +68,12 @@ public class Fizijatar implements ApstraktniDomenskiObjekat {
     }
 
     public void setPrezime(String prezime) {
+    	if(prezime==null) {
+    		throw new NullPointerException("prezime fizijatra ne sme biti null");
+    	}
+    	if(prezime.isEmpty()) {
+    		throw new IllegalArgumentException("prezime fizijatra ne sme biti prazno");
+    	}
         this.prezime = prezime;
     }
 
@@ -62,6 +82,12 @@ public class Fizijatar implements ApstraktniDomenskiObjekat {
     }
 
     public void setKorisnickoIme(String korisnickoIme) {
+    	if(korisnickoIme==null) {
+    		throw new NullPointerException("korisnicko ime fizijatra ne sme biti null");
+    	}
+    	if(korisnickoIme.isEmpty()) {
+    		throw new IllegalArgumentException("korisnicko ime fizijatra ne sme biti prazno");
+    	}
         this.korisnickoIme = korisnickoIme;
     }
 
@@ -70,6 +96,12 @@ public class Fizijatar implements ApstraktniDomenskiObjekat {
     }
 
     public void setSifra(String sifra) {
+    	if(sifra==null) {
+    		throw new NullPointerException("sifra fizijatra ne sme biti null");
+    	}
+    	if(sifra.isEmpty()) {
+    		throw new IllegalArgumentException("sifra fizijatra ne sme biti prazna");
+    	}
         this.sifra = sifra;
     }
 

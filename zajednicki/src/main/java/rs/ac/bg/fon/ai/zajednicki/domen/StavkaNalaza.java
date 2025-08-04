@@ -29,16 +29,23 @@ public class StavkaNalaza implements ApstraktniDomenskiObjekat {
     }
 
     public StavkaNalaza(int rb, double cena, Terapija terapija, Nalaz nalaz) {
-        this.rb = rb;
-        this.cena = cena;
-        this.terapija = terapija;
-        this.nalaz = nalaz;
+//        this.rb = rb;
+//        this.cena = cena;
+//        this.terapija = terapija;
+//        this.nalaz = nalaz;
+    	setRb(rb);
+    	setCena(cena);
+    	setTerapija(terapija);
+    	setNalaz(nalaz);
     }
 
     public StavkaNalaza(int rb, double cena, Terapija terapija) {
-        this.rb = rb;
-        this.cena = cena;
-        this.terapija = terapija;
+//        this.rb = rb;
+//        this.cena = cena;
+//        this.terapija = terapija;
+    	setRb(rb);
+    	setCena(cena);
+    	setTerapija(terapija);
     }
     
 
@@ -47,6 +54,9 @@ public class StavkaNalaza implements ApstraktniDomenskiObjekat {
     }
 
     public void setNalaz(Nalaz nalaz) {
+    	if(nalaz==null) {
+    		throw new NullPointerException("nalaz ne sme biti null");
+    	}
         this.nalaz = nalaz;
     }
 
@@ -55,6 +65,9 @@ public class StavkaNalaza implements ApstraktniDomenskiObjekat {
     }
 
     public void setRb(int rb) {
+    	if(rb<1) {
+    		throw new IllegalArgumentException("rb stavke nalaza ne sme biti manji od 1");
+    	}
         this.rb = rb;
     }
 
@@ -63,6 +76,9 @@ public class StavkaNalaza implements ApstraktniDomenskiObjekat {
     }
 
     public void setCena(double cena) {
+    	if(cena<0) {
+    		throw new IllegalArgumentException("cena ne sme biti manja od 0");
+    	}
         this.cena = cena;
     }
 
@@ -71,6 +87,9 @@ public class StavkaNalaza implements ApstraktniDomenskiObjekat {
     }
 
     public void setTerapija(Terapija terapija) {
+    	if(terapija==null) {
+    		throw new NullPointerException("terapija ne sme biti null");
+    	}
         this.terapija = terapija;
     }
 

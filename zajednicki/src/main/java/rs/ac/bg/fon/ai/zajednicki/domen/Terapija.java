@@ -24,10 +24,16 @@ public class Terapija implements ApstraktniDomenskiObjekat {
     }
 
     public Terapija(int idTerapija, String naziv, String opis, double cena) {
-        this.idTerapija = idTerapija;
-        this.naziv = naziv;
-        this.opis = opis;
-        this.cena = cena;
+    	
+    	setIdTerapija(idTerapija);
+    	setNaziv(naziv);
+    	setOpis(opis);
+    	setCena(cena);
+    	
+//        this.idTerapija = idTerapija;
+//        this.naziv = naziv;
+//        this.opis = opis;
+//        this.cena = cena;
     }
 
     public int getIdTerapija() {
@@ -35,6 +41,9 @@ public class Terapija implements ApstraktniDomenskiObjekat {
     }
 
     public void setIdTerapija(int idTerapija) {
+    	if(idTerapija<0) {
+    		throw new IllegalArgumentException("id terapije ne sme biti manji od 0");
+    	}
         this.idTerapija = idTerapija;
     }
 
@@ -43,6 +52,12 @@ public class Terapija implements ApstraktniDomenskiObjekat {
     }
 
     public void setNaziv(String naziv) {
+    	if(naziv==null) {
+    		throw new NullPointerException("naziv terapije ne sme biti null");
+    	}
+    	if(naziv.isEmpty()) {
+    		throw new IllegalArgumentException("naziv terapije ne sme biti prazan");
+    	}
         this.naziv = naziv;
     }
 
@@ -51,6 +66,12 @@ public class Terapija implements ApstraktniDomenskiObjekat {
     }
 
     public void setOpis(String opis) {
+    	if(opis==null) {
+    		throw new NullPointerException("opis terapije ne sme biti null");
+    	}
+    	if(opis.isEmpty()) {
+    		throw new IllegalArgumentException("opis terapije ne sme biti prazan");
+    	}
         this.opis = opis;
     }
 
@@ -59,6 +80,9 @@ public class Terapija implements ApstraktniDomenskiObjekat {
     }
 
     public void setCena(double cena) {
+    	if(cena<0) {
+    		throw new IllegalArgumentException("cena terapije ne sme biti manja od 0");
+    	}
         this.cena = cena;
     }
 
