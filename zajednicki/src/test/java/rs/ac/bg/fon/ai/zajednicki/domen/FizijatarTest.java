@@ -183,11 +183,10 @@ class FizijatarTest {
 	    when(rs.getInt("fizijatar.idFizijatra")).thenReturn(1);
 	    when(rs.getString("fizijatar.ime")).thenReturn("Pera");
 	    when(rs.getString("fizijatar.prezime")).thenReturn("Peric");
-	    when(rs.getString("fizijatar.korisnickoIme")).thenReturn("pera123");
-	    when(rs.getString("fizijatar.sifra")).thenReturn("lozinka");
+	    when(rs.getString("fizijatar.korisnickoIme")).thenReturn("pera");
+	    when(rs.getString("fizijatar.sifra")).thenReturn("p1");
 
 	    // 3. Pozivamo metodu koju testiramo
-	    Fizijatar f = new Fizijatar();
 	    List<ApstraktniDomenskiObjekat> lista = f.vratiListu(rs);
 
 	    // 4. Proveravamo rezultate
@@ -198,8 +197,8 @@ class FizijatarTest {
 	    assertEquals(1, rezultat.getIdFizijatra());
 	    assertEquals("Pera", rezultat.getIme());
 	    assertEquals("Peric", rezultat.getPrezime());
-	    assertEquals("pera123", rezultat.getKorisnickoIme());
-	    assertEquals("lozinka", rezultat.getSifra());
+	    assertEquals("pera", rezultat.getKorisnickoIme());
+	    assertEquals("p1", rezultat.getSifra());
 	}
 
 	@Test

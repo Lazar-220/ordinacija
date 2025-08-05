@@ -61,10 +61,10 @@ public class Specijalizacija implements ApstraktniDomenskiObjekat {
     }
 
     public void setInstitucija(String institucija) {
-    	if(naziv==null) {
+    	if(institucija==null) {
     		throw new NullPointerException("institucija gde je obavljena specijalizacija ne sme biti null");
     	}
-    	if(naziv.isEmpty()) {
+    	if(institucija.isEmpty()) {
     		throw new IllegalArgumentException("institucija gde je obavljena specijalizacija ne sme biti prazna");
     	}
         this.institucija = institucija;
