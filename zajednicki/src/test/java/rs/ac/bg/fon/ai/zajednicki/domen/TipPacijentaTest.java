@@ -43,7 +43,7 @@ class TipPacijentaTest {
     
     
     @Test
-    void testSetIdTipPacijentaValid() {
+    void testSetIdTipPacijenta() {
         tp.setIdTipPacijenta(5);
         assertEquals(5, tp.getIdTipPacijenta());
     }
@@ -67,7 +67,7 @@ class TipPacijentaTest {
     }
 
     @ParameterizedTest
-    @CsvSource({
+    @CsvSource({                                        //Sve moguce kombinacije atributa 2 objekata klase TipTerapija
     	"deca,musko,deca,musko,true",
     	"deca,musko,deca,zensko,false",
     	"deca,musko,odrasli,musko,false",
