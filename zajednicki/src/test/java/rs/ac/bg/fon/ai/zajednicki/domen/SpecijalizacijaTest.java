@@ -130,6 +130,11 @@ class SpecijalizacijaTest {
 		when(rs.getString("specijalizacija.institucija")).thenReturn("Visoka zdravstvena škola strukovnih studija u Nišu");
 		
 		List<ApstraktniDomenskiObjekat>lista=s.vratiListu(rs);
+		
+		assertNotNull(lista);
+		assertEquals(lista.size(), 1);
+		
+		
 		s=(Specijalizacija) lista.get(0);
 		
 		assertEquals(1, s.getIdSpecijalizacija());
