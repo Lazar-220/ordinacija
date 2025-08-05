@@ -86,36 +86,26 @@ public class Terapija implements ApstraktniDomenskiObjekat {
         this.cena = cena;
     }
 
-    @Override
-    public int hashCode() {
-    	return Objects.hash(idTerapija, cena, naziv,opis);
-    }
+    
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Terapija other = (Terapija) obj;
-        if (this.idTerapija != other.idTerapija) {
-            return false;
-        }
-        if (Double.doubleToLongBits(this.cena) != Double.doubleToLongBits(other.cena)) {
-            return false;
-        }
-        if (!Objects.equals(this.naziv, other.naziv)) {
-            return false;
-        }
-        return Objects.equals(this.opis, other.opis);
-    }
+	public int hashCode() {
+		return Objects.hash(idTerapija);
+	}
 
-    @Override
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Terapija other = (Terapija) obj;
+		return idTerapija == other.idTerapija;
+	}
+
+	@Override
     public String toString() {
         return naziv;
     }
