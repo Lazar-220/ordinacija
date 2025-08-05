@@ -58,7 +58,8 @@ class Fizijatar_specijalistaTest {
 
 	@Test
 	void testSetIdSertifikatPogresan() {
-		assertThrows(IllegalArgumentException.class, () -> fs.setIdSertifikat(-1));
+		assertThrows(IllegalArgumentException.class, 
+				() -> fs.setIdSertifikat(-1));
 	}
 
 	@Test
