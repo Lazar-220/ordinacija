@@ -6,6 +6,7 @@ package rs.ac.bg.fon.ai.zajednicki.domen;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -93,33 +94,26 @@ public class StavkaNalaza implements ApstraktniDomenskiObjekat {
         this.terapija = terapija;
     }
 
-    @Override
-    public int hashCode() {
-    	return Objects.hash(rb, cena, terapija);
-    }
+    
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final StavkaNalaza other = (StavkaNalaza) obj;
-        if (this.rb != other.rb) {
-            return false;
-        }
-        if (Double.doubleToLongBits(this.cena) != Double.doubleToLongBits(other.cena)) {
-            return false;
-        }
-        return Objects.equals(this.terapija, other.terapija);
-    }
+	public int hashCode() {
+		return Objects.hash(nalaz, rb, terapija);
+	}
 
-    @Override
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		StavkaNalaza other = (StavkaNalaza) obj;
+		return Objects.equals(nalaz, other.nalaz) && rb == other.rb && Objects.equals(terapija, other.terapija);
+	}
+
+	@Override
     public String toString() {
         return "StavkaNalaza{" + "rb=" + rb + ", cena=" + cena + ", terapija=" + terapija + '}';
     }
@@ -132,6 +126,7 @@ public class StavkaNalaza implements ApstraktniDomenskiObjekat {
 
     @Override
     public List<ApstraktniDomenskiObjekat> vratiListu(ResultSet rs) throws Exception {
+    	StavkaNalaza stavka=new StavkaNalaza();
         List<ApstraktniDomenskiObjekat>lista=new ArrayList<>();
         while(rs.next()){
             int rb=rs.getInt("stavka_nalaza.rb");
@@ -142,7 +137,7 @@ public class StavkaNalaza implements ApstraktniDomenskiObjekat {
             String opis=rs.getString("nalaz.opisNalaza");
             double ukupnaCena=rs.getDouble("nalaz.ukupnaCena");
             
-            Nalaz n=new Nalaz(id, datum, opis, ukupnaCena, null, null, null);
+            Nalaz n=new Nalaz(id, datum, opis, ukupnaCena, new Fizijatar(), new Pacijent(), Arrays.asList(stavka));
             
             int idTerapija=rs.getInt("terapija.idTerapija");
             String naziv=rs.getString("terapija.naziv");
@@ -150,7 +145,7 @@ public class StavkaNalaza implements ApstraktniDomenskiObjekat {
             double cenaTerapije=rs.getDouble("terapija.cena");
             Terapija t=new Terapija(idTerapija, naziv, opisTerapije, cenaTerapije);
             
-            StavkaNalaza stavka=new StavkaNalaza(rb, cena, t, n);
+            stavka=new StavkaNalaza(rb, cena, t, n);
             lista.add(stavka);
         }
         return lista;
