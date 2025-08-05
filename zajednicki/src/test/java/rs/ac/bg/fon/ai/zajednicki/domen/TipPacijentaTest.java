@@ -25,6 +25,24 @@ class TipPacijentaTest {
     }
 
     @Test
+	void testTipPacijenta() {
+		assertNotNull(tp);
+	}
+    
+    @Test
+	void testTipPacijentaIntStarosnaDobPol() {
+    	tp=new TipPacijenta(1,StarosnaDob.deca,Pol.musko);
+    	
+		assertNotNull(tp);
+		
+		assertEquals(1, tp.getIdTipPacijenta());
+		assertEquals(StarosnaDob.deca, tp.getStarosnaDob());
+		assertEquals(Pol.musko, tp.getPol());
+	}
+    
+    
+    
+    @Test
     void testSetIdTipPacijentaValid() {
         tp.setIdTipPacijenta(5);
         assertEquals(5, tp.getIdTipPacijenta());

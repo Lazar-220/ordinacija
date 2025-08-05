@@ -72,9 +72,11 @@ public class Specijalizacija implements ApstraktniDomenskiObjekat {
 
     
 
+    
+
     @Override
 	public int hashCode() {
-		return Objects.hash(idSpecijalizacija, institucija, naziv);
+		return Objects.hash(institucija, naziv);
 	}
 
 	@Override
@@ -86,11 +88,10 @@ public class Specijalizacija implements ApstraktniDomenskiObjekat {
 		if (getClass() != obj.getClass())
 			return false;
 		Specijalizacija other = (Specijalizacija) obj;
-		return idSpecijalizacija == other.idSpecijalizacija && Objects.equals(institucija, other.institucija)
-				&& Objects.equals(naziv, other.naziv);
+		return Objects.equals(institucija, other.institucija) && Objects.equals(naziv, other.naziv);
 	}
 
-    @Override
+	@Override
     public String toString() {
         return naziv;
     }

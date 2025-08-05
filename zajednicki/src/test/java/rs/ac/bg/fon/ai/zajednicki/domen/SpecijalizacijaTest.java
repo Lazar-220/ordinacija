@@ -94,20 +94,16 @@ class SpecijalizacijaTest {
 	
 	@ParameterizedTest
 	@CsvSource({
-		"1,Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,1,Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,true",
-		"1,Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,2,Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,false",
-		"1,Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,1,Ergoterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,false",
-		"1,Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,1,Fizioterapeut,Visoka zdravstvena škola strukovnih studija Beograd,false",
-		"1,Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,2,Ergoterapeut,Visoka zdravstvena škola strukovnih studija Beograd,false",
-		"1,Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,2,Ergoterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,false",
-		"1,Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,2,Fizioterapeut,Visoka zdravstvena škola strukovnih studija Beograd,false",
-		"1,Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,1,Ergoterapeut,Visoka zdravstvena škola strukovnih studija Beograd,false",
-	})
-	void testEquals(int id1,String naziv1,String instritucija1,int id2,String naziv2,String instritucija2,boolean ocekivano) {
+		"Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,true",
+		"Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,Ergoterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,false",
+		"Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,Fizioterapeut,Visoka zdravstvena škola strukovnih studija Beograd,false",
+		"Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,Ergoterapeut,Visoka zdravstvena škola strukovnih studija Beograd,false",
+		})
+	void testEquals(String naziv1,String instritucija1,String naziv2,String instritucija2,boolean ocekivano) {
 		
 		
-		s=new Specijalizacija(id1,naziv1,instritucija1);
-		Specijalizacija s2=new Specijalizacija(id2,naziv2,instritucija2);
+		s=new Specijalizacija(1,naziv1,instritucija1);
+		Specijalizacija s2=new Specijalizacija(2,naziv2,instritucija2);
 		
 		assertEquals(ocekivano, s.equals(s2));
 

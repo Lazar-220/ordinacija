@@ -110,9 +110,11 @@ public class Pacijent implements ApstraktniDomenskiObjekat {
 
     
 
+   
+
     @Override
 	public int hashCode() {
-		return Objects.hash(email, idPacijent, ime, prezime, tipPacijenta);
+		return Objects.hash(email);
 	}
 
 	@Override
@@ -124,11 +126,10 @@ public class Pacijent implements ApstraktniDomenskiObjekat {
 		if (getClass() != obj.getClass())
 			return false;
 		Pacijent other = (Pacijent) obj;
-		return Objects.equals(email, other.email) && idPacijent == other.idPacijent && Objects.equals(ime, other.ime)
-				&& Objects.equals(prezime, other.prezime) && Objects.equals(tipPacijenta, other.tipPacijenta);
+		return Objects.equals(email, other.email);
 	}
 
-    @Override
+	@Override
     public String toString() {
         return ime + " " + prezime;
     }

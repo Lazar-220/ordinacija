@@ -33,6 +33,9 @@ class Fizijatar_specijalistaTest {
 	@AfterEach
 	void tearDown() throws Exception {
 		fs = null;
+		fizijatar=null;
+		specijalizacija=null;
+		datum=null;
 	}
 
 	@Test
@@ -116,25 +119,29 @@ class Fizijatar_specijalistaTest {
 
 	@ParameterizedTest
 	@CsvSource({
-		"1,Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,1,Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,true",
-		"1,Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,2,Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,false",
-		"1,Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,1,Ergoterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,false",
-		"1,Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,1,Fizioterapeut,Visoka zdravstvena škola strukovnih studija Beograd,false",
-		"1,Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,2,Ergoterapeut,Visoka zdravstvena škola strukovnih studija Beograd,false",
-		"1,Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,2,Ergoterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,false",
-		"1,Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,2,Fizioterapeut,Visoka zdravstvena škola strukovnih studija Beograd,false",
-		"1,Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,1,Ergoterapeut,Visoka zdravstvena škola strukovnih studija Beograd,false",
+		"fiz1,Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,fiz1,Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,true",
+		"fiz1,Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,fiz2,Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,false",
+		"fiz1,Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,fiz1,Ergoterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,false",
+		"fiz1,Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,fiz1,Fizioterapeut,Visoka zdravstvena škola strukovnih studija Beograd,false",
+		"fiz1,Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,fiz2,Ergoterapeut,Visoka zdravstvena škola strukovnih studija Beograd,false",
+		"fiz1,Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,fiz2,Ergoterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,false",
+		"fiz1,Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,fiz2,Fizioterapeut,Visoka zdravstvena škola strukovnih studija Beograd,false",
+		"fiz1,Fizioterapeut,Visoka zdravstvena škola strukovnih studija u Nišu,fiz1,Ergoterapeut,Visoka zdravstvena škola strukovnih studija Beograd,false",
 	
 	})
-	void testEquals(int id1, String naziv1, String inst1,
-	                int id2, String naziv2, String inst2,
+	void testEquals(String sifra1, String naziv1, String inst1,
+					String sifra2, String naziv2, String inst2,
 	                boolean expected) {
 
-		Specijalizacija s1 = new Specijalizacija(id1, naziv1, inst1);
-		Specijalizacija s2 = new Specijalizacija(id2, naziv2, inst2);
+		Fizijatar f1=new Fizijatar();
+		f1.setSifra(sifra1);
+		Fizijatar f2=new Fizijatar();
+		f2.setSifra(sifra2);
+		Specijalizacija s1 = new Specijalizacija(1, naziv1, inst1);
+		Specijalizacija s2 = new Specijalizacija(2, naziv2, inst2);
 
-		Fizijatar_specijalista fs1 = new Fizijatar_specijalista(10, fizijatar, s1, datum);
-		Fizijatar_specijalista fs2 = new Fizijatar_specijalista(20, fizijatar, s2, datum);
+		Fizijatar_specijalista fs1 = new Fizijatar_specijalista(10, f1, s1, datum);
+		Fizijatar_specijalista fs2 = new Fizijatar_specijalista(20, f2, s2, datum);
 
 		assertEquals(expected, fs1.equals(fs2));
 	}

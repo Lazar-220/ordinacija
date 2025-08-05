@@ -85,9 +85,13 @@ public class Fizijatar_specijalista implements ApstraktniDomenskiObjekat {
 
     
 
+    
+
+    
+
     @Override
 	public int hashCode() {
-		return Objects.hash(specijalizacija);
+		return Objects.hash(fizijatar, specijalizacija);
 	}
 
 	@Override
@@ -99,12 +103,10 @@ public class Fizijatar_specijalista implements ApstraktniDomenskiObjekat {
 		if (getClass() != obj.getClass())
 			return false;
 		Fizijatar_specijalista other = (Fizijatar_specijalista) obj;
-		return Objects.equals(specijalizacija, other.specijalizacija);
+		return Objects.equals(fizijatar, other.fizijatar) && Objects.equals(specijalizacija, other.specijalizacija);
 	}
 
-    
-
-    @Override
+	@Override
     public String toString() {
         return "Fizijatar_specijalista{" + "fizijatar=" + fizijatar + ", specijalizacija=" + specijalizacija + '}';
     }
