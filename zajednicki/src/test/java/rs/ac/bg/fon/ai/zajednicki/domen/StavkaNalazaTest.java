@@ -105,6 +105,8 @@ class StavkaNalazaTest {
 		sn.setCena(200);
 		sn.setTerapija(t);
 		assertTrue(sn.toString().contains("Kineziterapija"));
+		assertTrue(sn.toString().contains(1+""));
+		assertTrue(sn.toString().contains(200+""));
 	}
 
 	@Test

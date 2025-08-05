@@ -113,8 +113,8 @@ class TerapijaTest {
 	
 	@Test
 	void testToString() {
-		t.setNaziv("Laser");
-		assertTrue(t.toString().contains("Laser"));
+		t.setNaziv("Kineziterapija");
+		assertTrue(t.toString().contains("Kineziterapija"));
 	}
 
 	@Test

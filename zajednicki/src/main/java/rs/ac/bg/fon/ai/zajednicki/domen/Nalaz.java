@@ -6,6 +6,7 @@ package rs.ac.bg.fon.ai.zajednicki.domen;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -137,9 +138,11 @@ public class Nalaz implements ApstraktniDomenskiObjekat {
 
     
 
+   
+
     @Override
 	public int hashCode() {
-		return Objects.hash(datumIzdavanja, fizijatar, idNalaz, listaStavki, opisNalaza, pacijent, ukupnaCena);
+		return Objects.hash(idNalaz);
 	}
 
 	@Override
@@ -151,13 +154,10 @@ public class Nalaz implements ApstraktniDomenskiObjekat {
 		if (getClass() != obj.getClass())
 			return false;
 		Nalaz other = (Nalaz) obj;
-		return Objects.equals(datumIzdavanja, other.datumIzdavanja) && Objects.equals(fizijatar, other.fizijatar)
-				&& idNalaz == other.idNalaz && Objects.equals(listaStavki, other.listaStavki)
-				&& Objects.equals(opisNalaza, other.opisNalaza) && Objects.equals(pacijent, other.pacijent)
-				&& Double.doubleToLongBits(ukupnaCena) == Double.doubleToLongBits(other.ukupnaCena);
+		return idNalaz == other.idNalaz;
 	}
 
-    @Override
+	@Override
     public String toString() {
         return "Nalaz{" + "opisNalaza=" + opisNalaza + ", ukupnaCena=" + ukupnaCena + '}';
     }
@@ -179,8 +179,8 @@ public class Nalaz implements ApstraktniDomenskiObjekat {
             double ukupnaCena=rs.getDouble("nalaz.ukupnaCena");
             Fizijatar f=new Fizijatar(rs.getInt("fizijatar.idFizijatra"), rs.getString("fizijatar.ime"), rs.getString("fizijatar.prezime"), rs.getString("fizijatar.korisnickoIme"), rs.getString("fizijatar.sifra"));
             //TipPacijenta tipPacijenta=new TipPacijenta(rs.getInt("tip_pacijenta.idTipPacijenta"), StarosnaDob.valueOf(rs.getString("tip_pacijenta.starosnaDob")), Pol.valueOf(rs.getString("tip_pacijenta.pol")));
-            Pacijent p=new Pacijent(rs.getInt("pacijent.idPacijent"), rs.getString("pacijent.ime"), rs.getString("pacijent.prezime"), rs.getString("pacijent.email"), null);
-            Nalaz n=new Nalaz(id, datum, opis, ukupnaCena, f, p, null);
+            Pacijent p=new Pacijent(rs.getInt("pacijent.idPacijent"), rs.getString("pacijent.ime"), rs.getString("pacijent.prezime"), rs.getString("pacijent.email"), new TipPacijenta());
+            Nalaz n=new Nalaz(id, datum, opis, ukupnaCena, f, p, Arrays.asList(new StavkaNalaza()));
             lista.add(n);
         }
         return lista;

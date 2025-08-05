@@ -108,7 +108,7 @@ class TipPacijentaTest {
     }
 
     @Test
-    void testToStringSadrziVrednosti() {
+    void testToString() {
         tp.setStarosnaDob(StarosnaDob.deca);
         tp.setPol(Pol.zensko);
         String s = tp.toString();
