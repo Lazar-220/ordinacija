@@ -214,7 +214,7 @@ public class StavkaNalaza implements ApstraktniDomenskiObjekat {
     /**
      * Vraća string reprezentaciju stavke.
      * 
-     * @return String u formatu: StavkaNalaza{rb=1, cena=1000.0, terapija=Terapija1}
+     * @return String u formatu: StavkaNalaza{rb=####, cena=####, terapija=####}
      */
     @Override
     public String toString() {
