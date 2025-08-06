@@ -67,7 +67,7 @@ class TipPacijentaTest {
     }
 
     @ParameterizedTest
-    @CsvSource({                                        //Sve moguce kombinacije atributa 2 objekata klase TipTerapija
+    @CsvSource({                                        //Sve moguce kombinacije atributa pol i starosna dob 2 objekata klase TipTerapija
     	"deca,musko,deca,musko,true",
     	"deca,musko,deca,zensko,false",
     	"deca,musko,odrasli,musko,false",
