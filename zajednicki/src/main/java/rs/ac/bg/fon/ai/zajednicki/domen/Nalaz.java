@@ -15,149 +15,265 @@ import rs.ac.bg.fon.ai.zajednicki.domen.Enum.Pol;
 import rs.ac.bg.fon.ai.zajednicki.domen.Enum.StarosnaDob;
 
 /**
- *
- * @author milos
+ * Predstavlja nalaz koji se izdaje pacijentu nakon pregleda kod fizijatra.
+ * 
+ * Klasa implementira interfejs ApstraktniDomenskiObjekat i omogućava komunikaciju sa bazom podataka.
+ * 
+ * <p>Nalaz sadrži informacije o:</p>
+ * <ul>
+ *   <li>Jedinstvenom identifikatoru nalaza</li>
+ *   <li>Datumu izdavanja</li>
+ *   <li>Opisu nalaza</li>
+ *   <li>Ukupnoj ceni</li>
+ *   <li>Fizijatru koji je izdao nalaz</li>
+ *   <li>Pacijentu na koga se nalaz odnosi</li>
+ * </ul>
+ * 
+ * @author Lazar Milosavljević
  */
 public class Nalaz implements ApstraktniDomenskiObjekat {
 
+    /** Identifikator nalaza */
     private int idNalaz;
+    /** Datum izdavanja nalaza */
     private Date datumIzdavanja;
+    /** Opis nalaza */
     private String opisNalaza;
+    /** Ukupna cena nalaza */
     private double ukupnaCena;
+    /** Fizijatar koji je izdao nalaz */
     private Fizijatar fizijatar;
+    /** Pacijent na koga se odnosi nalaz */
     private Pacijent pacijent;
-    private List<StavkaNalaza>listaStavki;
-    
-    
+    /** Lista stavki koje pripadaju nalazu */
+    private List<StavkaNalaza> listaStavki;
 
+    /**
+     * Podrazumevani konstruktor. Inicijalizuje nalaz bez vrednosti.
+     */
     public Nalaz() {
     }
 
+    /**
+     * Parametrizovani konstruktor koji inicijalizuje sve atribute nalaza.
+     * 
+     * @param idNalaz identifikator nalaza
+     * @param datumIzdavanja datum izdavanja nalaza
+     * @param opisNalaza opis nalaza
+     * @param ukupnaCena ukupna cena nalaza
+     * @param fizijatar fizijatar koji je izdao nalaz
+     * @param pacijent pacijent na koga se odnosi nalaz
+     * @param listaStavki lista stavki koje pripadaju nalazu
+     */
     public Nalaz(int idNalaz, Date datumIzdavanja, String opisNalaza, double ukupnaCena, Fizijatar fizijatar, Pacijent pacijent, List<StavkaNalaza> listaStavki) {
-//        this.idNalaz = idNalaz;
-//        this.datumIzdavanja = datumIzdavanja;
-//        this.opisNalaza = opisNalaza;
-//        this.ukupnaCena = ukupnaCena;
-//        this.fizijatar = fizijatar;
-//        this.pacijent = pacijent;
-//        this.listaStavki = listaStavki;
-    	setIdNalaz(idNalaz);
-    	setDatumIzdavanja(datumIzdavanja);
-    	setOpisNalaza(opisNalaza);
-    	setUkupnaCena(ukupnaCena);
-    	setFizijatar(fizijatar);
-    	setPacijent(pacijent);
-    	setListaStavki(listaStavki);
+        setIdNalaz(idNalaz);
+        setDatumIzdavanja(datumIzdavanja);
+        setOpisNalaza(opisNalaza);
+        setUkupnaCena(ukupnaCena);
+        setFizijatar(fizijatar);
+        setPacijent(pacijent);
+        setListaStavki(listaStavki);
     }
 
+    /**
+     * Vraca ID nalaza.
+     * 
+     * @return idNalaz
+     */
     public int getIdNalaz() {
         return idNalaz;
     }
 
+    /**
+     * Postavlja ID nalaza.
+     * 
+     * @param idNalaz ID nalaza koji ne sme biti negativan
+     * @throws java.lang.IllegalArgumentException ako je id manji od 0
+     */
     public void setIdNalaz(int idNalaz) {
-    	if(idNalaz<0) {
-    		throw new IllegalArgumentException("id nalaza ne sme biti manji od 0");
-    	}
+        if(idNalaz<0) {
+            throw new IllegalArgumentException("id nalaza ne sme biti manji od 0");
+        }
         this.idNalaz = idNalaz;
     }
 
+    /**
+     * Vraca datum izdavanja nalaza.
+     * 
+     * @return datumIzdavanja
+     */
     public Date getDatumIzdavanja() {
         return datumIzdavanja;
     }
 
+    /**
+     * Postavlja datum izdavanja nalaza.
+     * 
+     * @param datumIzdavanja datum izdavanja koji ne sme biti null niti u buducnosti
+     * @throws java.lang.NullPointerException ako je datum null
+     * @throws java.lang.IllegalArgumentException ako je datum u buducnosti
+     */
     public void setDatumIzdavanja(Date datumIzdavanja) {
-    	if(datumIzdavanja==null) {
-    		throw new NullPointerException("datum izdavanja nalaza ne sme biti null");
-    	}
-    	if(datumIzdavanja.getTime()>new Date().getTime()) {
-    		throw new IllegalArgumentException("datum izdavanja nalaza ne sme biti u buducnosti");
-    	}
+        if(datumIzdavanja==null) {
+            throw new NullPointerException("datum izdavanja nalaza ne sme biti null");
+        }
+        if(datumIzdavanja.getTime()>new Date().getTime()) {
+            throw new IllegalArgumentException("datum izdavanja nalaza ne sme biti u buducnosti");
+        }
         this.datumIzdavanja = datumIzdavanja;
     }
 
+    /**
+     * Vraca opis nalaza.
+     * 
+     * @return opisNalaza
+     */
     public String getOpisNalaza() {
         return opisNalaza;
     }
 
+    /**
+     * Postavlja opis nalaza.
+     * 
+     * @param opisNalaza opis koji ne sme biti null ni prazan
+     * @throws java.lang.NullPointerException ako je opis null
+     * @throws java.lang.IllegalArgumentException ako je opis prazan
+     */
     public void setOpisNalaza(String opisNalaza) {
-    	if(opisNalaza==null) {
-    		throw new NullPointerException("opis nalaza ne sme biti null");
-    	}
-    	if(opisNalaza.isEmpty()) {
-    		throw new IllegalArgumentException("opis nalaza ne sme biti prazan");
-    	}
+        if(opisNalaza==null) {
+            throw new NullPointerException("opis nalaza ne sme biti null");
+        }
+        if(opisNalaza.isEmpty()) {
+            throw new IllegalArgumentException("opis nalaza ne sme biti prazan");
+        }
         this.opisNalaza = opisNalaza;
     }
 
+    /**
+     * Vraca ukupnu cenu nalaza.
+     * 
+     * @return ukupnaCena
+     */
     public double getUkupnaCena() {
         return ukupnaCena;
     }
 
+    /**
+     * Postavlja ukupnu cenu nalaza.
+     * 
+     * @param ukupnaCena cena koja ne sme biti manja od 0
+     * @throws java.lang.IllegalArgumentException ako je cena manja od 0
+     */
     public void setUkupnaCena(double ukupnaCena) {
-    	if(ukupnaCena<0) {
-    		throw new IllegalArgumentException("ukupna cena nalaza ne sme biti manja od 0");
-    	}
+        if(ukupnaCena<0) {
+            throw new IllegalArgumentException("ukupna cena nalaza ne sme biti manja od 0");
+        }
         this.ukupnaCena = ukupnaCena;
     }
 
+    /**
+     * Vraca fizijatra koji je izdao nalaz.
+     * 
+     * @return fizijatar
+     */
     public Fizijatar getFizijatar() {
         return fizijatar;
     }
 
+    /**
+     * Postavlja fizijatra.
+     * 
+     * @param fizijatar koji ne sme biti null
+     * @throws java.lang.NullPointerException ako je fizijatar null
+     */
     public void setFizijatar(Fizijatar fizijatar) {
-    	if(fizijatar==null) {
-    		throw new NullPointerException("fizijatar ne sme biti null");
-    	}
+        if(fizijatar==null) {
+            throw new NullPointerException("fizijatar ne sme biti null");
+        }
         this.fizijatar = fizijatar;
     }
 
+    /**
+     * Vraca pacijenta na koga se odnosi nalaz.
+     * 
+     * @return pacijent
+     */
     public Pacijent getPacijent() {
         return pacijent;
     }
 
+    /**
+     * Postavlja pacijenta.
+     * 
+     * @param pacijent koji ne sme biti null
+     * @throws java.lang.NullPointerException ako je pacijent null
+     */
     public void setPacijent(Pacijent pacijent) {
-    	if(pacijent==null) {
-    		throw new NullPointerException("pacijent ne sme biti null");
-    	}
+        if(pacijent==null) {
+            throw new NullPointerException("pacijent ne sme biti null");
+        }
         this.pacijent = pacijent;
     }
 
+    /**
+     * Vraca listu stavki nalaza.
+     * 
+     * @return listaStavki
+     */
     public List<StavkaNalaza> getListaStavki() {
         return listaStavki;
     }
 
+    /**
+     * Postavlja listu stavki nalaza.
+     * 
+     * @param listaStavki lista koja ne sme biti null niti prazna
+     * @throws java.lang.NullPointerException ako je lista null
+     * @throws java.lang.IllegalArgumentException ako je lista prazna
+     */
     public void setListaStavki(List<StavkaNalaza> listaStavki) {
-    	if(listaStavki==null) {
-    		throw new NullPointerException("lista stavki ne sme biti null");
-    	}
-    	if(listaStavki.isEmpty()) {
-    		throw new IllegalArgumentException("lista stavki nalaza ne sme biti prazna");
-    	}
+        if(listaStavki==null) {
+            throw new NullPointerException("lista stavki ne sme biti null");
+        }
+        if(listaStavki.isEmpty()) {
+            throw new IllegalArgumentException("lista stavki nalaza ne sme biti prazna");
+        }
         this.listaStavki = listaStavki;
     }
 
     
 
    
-
+    /**
+     * Računa hash kod na osnovu ID-a nalaza.
+     * 
+     * @return Hash kod kao int.
+     */
     @Override
 	public int hashCode() {
 		return Objects.hash(idNalaz);
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Nalaz other = (Nalaz) obj;
-		return idNalaz == other.idNalaz;
-	}
+    /**
+     * Poredi ovaj nalaz sa drugim objektom na osnovu ID-ja.
+     *
+     * @param obj Objekat za poređenje
+     * @return true ako su oba objekta tipa Nalaz i imaju isti ID, inače false
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Nalaz)) return false;
+        Nalaz other = (Nalaz) obj;
+        return idNalaz == other.idNalaz;
+    }
 
-	@Override
+    /**
+     * Vraća string reprezentaciju nalaza.
+     *
+     * @return Opis i ukupna cena nalaza u formatu: Nalaz{opisNalaza=####, ukupnaCena=####}
+     */
+    @Override
     public String toString() {
         return "Nalaz{" + "opisNalaza=" + opisNalaza + ", ukupnaCena=" + ukupnaCena + '}';
     }

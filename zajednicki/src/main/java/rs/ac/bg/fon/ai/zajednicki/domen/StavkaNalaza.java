@@ -15,108 +15,212 @@ import rs.ac.bg.fon.ai.zajednicki.domen.Enum.Pol;
 import rs.ac.bg.fon.ai.zajednicki.domen.Enum.StarosnaDob;
 
 /**
- *
- * @author milos
+ * Predstavlja stavku nalaza koja sadrži redni broj, cenu, terapiju i pripadajući nalaz.
+ * 
+ * Klasa implementira interfejs ApstraktniDomenskiObjekat i omogućava komunikaciju sa bazom podataka.
+ * 
+ * @author Lazar Milosavljević
  */
 public class StavkaNalaza implements ApstraktniDomenskiObjekat {
 
-    
+    /**
+     * Redni broj stavke u okviru nalaza.
+     */
     private int rb;
+
+    /**
+     * Cena stavke (terapije).
+     */
     private double cena;
+
+    /**
+     * Terapija koja je deo ove stavke.
+     */
     private Terapija terapija;
+
+    /**
+     * Nalaz kojem pripada ova stavka.
+     */
     private Nalaz nalaz;
 
+    /**
+     * Podrazumevani konstruktor. Inicijalizuje stavku nalaza bez vrednosti.
+     */
     public StavkaNalaza() {
     }
 
+    /**
+     * Parametrizovani konstruktor koji inicijalizuje sve atribute stavke.
+     * 
+     * @param rb Redni broj stavke. Mora biti veći od 0.
+     * @param cena Cena terapije. Ne sme biti manja od 0.
+     * @param terapija Terapija koja se primenjuje. Ne sme biti null.
+     * @param nalaz Nalaz kojem stavka pripada. Ne sme biti null.
+     * 
+     * @throws java.lang.IllegalArgumentException ako je cena manja od 0 ili rb manji od 1.
+     * @throws java.lang.NullPointerException ako je terapija ili nalaz null.
+     */
     public StavkaNalaza(int rb, double cena, Terapija terapija, Nalaz nalaz) {
 //        this.rb = rb;
 //        this.cena = cena;
 //        this.terapija = terapija;
 //        this.nalaz = nalaz;
-    	setRb(rb);
-    	setCena(cena);
-    	setTerapija(terapija);
-    	setNalaz(nalaz);
+        setRb(rb);
+        setCena(cena);
+        setTerapija(terapija);
+        setNalaz(nalaz);
     }
 
+    /**
+     * Konstruktor bez nalaza. Koristi se kada još nije poznat nalaz.
+     * 
+     * @param rb Redni broj stavke.
+     * @param cena Cena terapije.
+     * @param terapija Terapija u okviru stavke.
+     * 
+     * @throws java.lang.IllegalArgumentException ako je cena manja od 0 ili rb manji od 1.
+     * @throws java.lang.NullPointerException ako je terapija null.
+     */
     public StavkaNalaza(int rb, double cena, Terapija terapija) {
 //        this.rb = rb;
 //        this.cena = cena;
 //        this.terapija = terapija;
-    	setRb(rb);
-    	setCena(cena);
-    	setTerapija(terapija);
+        setRb(rb);
+        setCena(cena);
+        setTerapija(terapija);
     }
-    
 
+    /**
+     * Vraća nalaz kojem pripada stavka.
+     * 
+     * @return Nalaz kao objekat klase Nalaz.
+     */
     public Nalaz getNalaz() {
         return nalaz;
     }
 
+    /**
+     * Postavlja nalaz kojem stavka pripada.
+     * 
+     * @param nalaz Nalaz. Ne sme biti null.
+     * 
+     * @throws java.lang.NullPointerException ako je nalaz null.
+     */
     public void setNalaz(Nalaz nalaz) {
-    	if(nalaz==null) {
-    		throw new NullPointerException("nalaz ne sme biti null");
-    	}
+        if (nalaz == null) {
+            throw new NullPointerException("nalaz ne sme biti null");
+        }
         this.nalaz = nalaz;
     }
 
+    /**
+     * Vraća redni broj stavke.
+     * 
+     * @return Redni broj kao int.
+     */
     public int getRb() {
         return rb;
     }
 
+    /**
+     * Postavlja redni broj stavke.
+     * 
+     * @param rb Redni broj. Mora biti veći od 0.
+     * 
+     * @throws java.lang.IllegalArgumentException ako je rb manji od 1.
+     */
     public void setRb(int rb) {
-    	if(rb<1) {
-    		throw new IllegalArgumentException("rb stavke nalaza ne sme biti manji od 1");
-    	}
+        if (rb < 1) {
+            throw new IllegalArgumentException("rb stavke nalaza ne sme biti manji od 1");
+        }
         this.rb = rb;
     }
 
+    /**
+     * Vraća cenu terapije.
+     * 
+     * @return Cena kao double.
+     */
     public double getCena() {
         return cena;
     }
 
+    /**
+     * Postavlja cenu terapije.
+     * 
+     * @param cena Cena. Ne sme biti manja od 0.
+     * 
+     * @throws java.lang.IllegalArgumentException ako je cena manja od 0.
+     */
     public void setCena(double cena) {
-    	if(cena<0) {
-    		throw new IllegalArgumentException("cena ne sme biti manja od 0");
-    	}
+        if (cena < 0) {
+            throw new IllegalArgumentException("cena ne sme biti manja od 0");
+        }
         this.cena = cena;
     }
 
+    /**
+     * Vraća terapiju iz stavke.
+     * 
+     * @return Terapija kao objekat klase Terapija.
+     */
     public Terapija getTerapija() {
         return terapija;
     }
 
+    /**
+     * Postavlja terapiju.
+     * 
+     * @param terapija Terapija. Ne sme biti null.
+     * 
+     * @throws java.lang.NullPointerException ako je terapija null.
+     */
     public void setTerapija(Terapija terapija) {
-    	if(terapija==null) {
-    		throw new NullPointerException("terapija ne sme biti null");
-    	}
+        if (terapija == null) {
+            throw new NullPointerException("terapija ne sme biti null");
+        }
         this.terapija = terapija;
     }
 
-    
-
+    /**
+     * Računa hash kod na osnovu nalaza, rednog broja i terapije.
+     * 
+     * @return Hash kod kao int.
+     */
     @Override
-	public int hashCode() {
-		return Objects.hash(nalaz, rb, terapija);
-	}
+    public int hashCode() {
+        return Objects.hash(nalaz, rb, terapija);
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		StavkaNalaza other = (StavkaNalaza) obj;
-		return Objects.equals(nalaz, other.nalaz) && rb == other.rb && Objects.equals(terapija, other.terapija);
-	}
+    /**
+     * Poredi dve stavke nalaza po nalazu, rednom broju i terapiji.
+     * 
+     * @param obj Objekat sa kojim se poredi.
+     * 
+     * @return true ako su nalaz, rb i terapija isti, u suprotnom false.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        StavkaNalaza other = (StavkaNalaza) obj;
+        return Objects.equals(nalaz, other.nalaz) && rb == other.rb && Objects.equals(terapija, other.terapija);
+    }
 
-	@Override
+    /**
+     * Vraća string reprezentaciju stavke.
+     * 
+     * @return String u formatu: StavkaNalaza{rb=####, cena=####, terapija=####}
+     */
+    @Override
     public String toString() {
         return "StavkaNalaza{" + "rb=" + rb + ", cena=" + cena + ", terapija=" + terapija + '}';
     }
+
     
     
     @Override
