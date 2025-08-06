@@ -15,18 +15,10 @@ import java.io.Serializable;
  * @author Lazar Milosavljević
  */
 public enum StarosnaDob implements Serializable {
-    /**
-     * Deca
-     */
+    
     deca,
 
-    /**
-     * Odrasli
-     */
     odrasli,
 
-    /**
-     * Penzioneri
-     */
     penzioneri
 }
