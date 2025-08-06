@@ -17,6 +17,8 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Predstavlja fizijatra koji ima id, ime, prezime, korisničko ime i šifru.
  * 
+ * Ova klasa implementira interfejs ApstraktniDomenskiObjekat, što omogućava komunikaciju sa bazom podataka.
+ * 
  * @author Lazar Milosavljević
  */
 public class Fizijatar implements ApstraktniDomenskiObjekat {
@@ -238,7 +240,7 @@ public class Fizijatar implements ApstraktniDomenskiObjekat {
      * <ul>
      * 
      * <li><b>true</b> - ako je uneti objekat različit od null, ako je objekat tipa Fizijatar 
-     * i ako su mu korisničko ime i šifra isti kao kod prvog Fizijatra.</li>
+     * i ako su mu korisničko ime i šifra isti kao kod prvog fizijatra.</li>
      * 
      * <li><b>false</b> - u svim ostalim slučajevima.</li>
      * </ul>
