@@ -13,7 +13,7 @@ import java.util.Objects;
  *
  * @author milos
  */
-public class Fizijatar implements ApstraktniDomenskiObjekat {
+public class Fizijatar implements ApstraktniDomenskiObjekat {//POCINJEMO DOKUMENTOVANJE
 
     
     private int idFizijatra;
