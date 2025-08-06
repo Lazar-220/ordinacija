@@ -59,7 +59,7 @@ public class Fizijatar implements ApstraktniDomenskiObjekat {
     }
 
     /**
-     * Inicijalizuje objekat sa unetim id-em, imenom, prezimenom, korisničkim imenom i šifrom.
+     * Inicijalizuje objekat sa unetim Id-em, imenom, prezimenom, korisničkim imenom i šifrom.
      * 
      * @param idFizijatra Id fizijatra koji se unosi u objekat. Id ne sme biti manji od 0.
      * @param ime Ime fizijatra koje se unosi u objekat. Ime ne sme biti null niti prazno.
