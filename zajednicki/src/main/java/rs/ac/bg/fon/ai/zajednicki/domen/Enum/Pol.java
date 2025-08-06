@@ -9,7 +9,7 @@ import java.io.Serializable;
 /**
  * Enumeracija koja predstavlja pol osobe.
  * <p>
- * Koristi se za razlikovanje između muškog i ženskog pola.
+ * Koristi se za kategorizaciju pacijenata prema polu.
  * </p>
  *
  * @author Lazar Milosavljević

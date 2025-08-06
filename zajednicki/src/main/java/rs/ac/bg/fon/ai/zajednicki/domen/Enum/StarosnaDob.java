@@ -7,9 +7,26 @@ package rs.ac.bg.fon.ai.zajednicki.domen.Enum;
 import java.io.Serializable;
 
 /**
+ * Enumeracija koja predstavlja starosnu dob pacijenata.
+ * <p>
+ * Koristi se za kategorizaciju pacijenata prema starosnim grupama.
+ * </p>
  *
- * @author milos
+ * @author Lazar Milosavljević
  */
 public enum StarosnaDob implements Serializable {
-    deca,odrasli,penzioneri
+    /**
+     * Deca
+     */
+    deca,
+
+    /**
+     * Odrasli
+     */
+    odrasli,
+
+    /**
+     * Penzioneri
+     */
+    penzioneri
 }
