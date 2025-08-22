@@ -5,6 +5,13 @@
     <artifactId>aplikacija</artifactId>
     <version>0.0.1</version>
   </parent>
-  <artifactId>zajednicki</artifactId>
-  
+  <artifactId>server</artifactId>
+  <dependencies>
+
+  <dependency>
+  	<groupId>rs.ac.bg.fon.ai</groupId>
+  	<artifactId>zajednicki</artifactId>
+  	<version>0.0.1</version>
+  </dependency>
+  </dependencies>
 </project>
