@@ -26,7 +26,7 @@ class Fizijatar_specijalistaTest {
 	void setUp() throws Exception {
 		fizijatar = new Fizijatar(1, "Pera", "Peric", "pera", "p1");
 		specijalizacija=new Specijalizacija(1,"Fizioterapeut","Visoka zdravstvena škola strukovnih studija u Nišu");
-		datum = new Date(System.currentTimeMillis() - 10000); // validan datum u prošlosti
+		datum = new Date(System.currentTimeMillis() - 10000); // validan datum u prošlosti - provera
 		fs = new Fizijatar_specijalista();
 	}
 

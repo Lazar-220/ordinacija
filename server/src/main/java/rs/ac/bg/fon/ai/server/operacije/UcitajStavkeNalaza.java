@@ -35,11 +35,13 @@ public class UcitajStavkeNalaza extends ApstraktnaGenerickaOperacija {
     protected void izvrsiOperaciju(Object objekat, String kljuc) {
         try {
             if(((Nalaz)objekat).getIdNalaz()==0){
+
                 String uslov=" join terapija on terapija_id=idTerapija join nalaz on nalaz_id=idNalaz order by rb asc";
                 lista=broker.getAll(new StavkaNalaza(), uslov);
                 return;
             }
             String uslov=" join terapija on terapija_id=idTerapija join nalaz on nalaz_id=idNalaz where nalaz_id="+ ((Nalaz)objekat).getIdNalaz()+" order by rb asc";
+
             lista=broker.getAll(new StavkaNalaza(), uslov);
         } catch (Exception ex) {
             Logger.getLogger(UcitajStavkeNalaza.class.getName()).log(Level.SEVERE, null, ex);
