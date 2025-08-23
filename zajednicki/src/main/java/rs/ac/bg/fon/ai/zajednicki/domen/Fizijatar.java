@@ -68,16 +68,16 @@ public class Fizijatar implements ApstraktniDomenskiObjekat {
      * @param sifra Šifra fizijatra koja se unosi u objekat. Šifra ne sme biti null niti prazna.
      */
     public Fizijatar(int idFizijatra, String ime, String prezime, String korisnickoIme, String sifra) {
-//        this.idFizijatra = idFizijatra;
-//        this.ime = ime;
-//        this.prezime = prezime;
-//        this.korisnickoIme = korisnickoIme;
-//        this.sifra = sifra;
-    	setIdFizijatra(idFizijatra);
-    	setIme(ime);
-    	setPrezime(prezime);
-    	setKorisnickoIme(korisnickoIme);
-    	setSifra(sifra);
+        this.idFizijatra = idFizijatra;
+        this.ime = ime;
+        this.prezime = prezime;
+        this.korisnickoIme = korisnickoIme;
+        this.sifra = sifra;
+//    	setIdFizijatra(idFizijatra);
+//    	setIme(ime);
+//    	setPrezime(prezime);
+//    	setKorisnickoIme(korisnickoIme);
+//    	setSifra(sifra);
     }
     
     /**

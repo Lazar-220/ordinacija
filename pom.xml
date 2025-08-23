@@ -6,6 +6,7 @@
   <packaging>pom</packaging>
   <modules>
   	<module>zajednicki</module>
+  	<module>klijent</module>
   </modules>
   <properties>
   	<maven.compiler.source>17</maven.compiler.source>
@@ -34,6 +35,15 @@
 	    <groupId>com.google.code.gson</groupId>
 	    <artifactId>gson</artifactId>
 	    <version>2.10.1</version>
+	</dependency>
+	
+	
+	
+	
+	<dependency>
+	    <groupId>mysql</groupId>
+	    <artifactId>mysql-connector-java</artifactId>
+	    <version>8.0.18</version>
 	</dependency>
 	
   </dependencies>
