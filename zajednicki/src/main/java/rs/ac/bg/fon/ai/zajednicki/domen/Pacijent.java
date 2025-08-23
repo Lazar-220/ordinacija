@@ -65,16 +65,16 @@ public class Pacijent implements ApstraktniDomenskiObjekat {
      * @param tipPacijenta Tip pacijenta. Ne sme biti null.
      */
     public Pacijent(int idPacijent, String ime, String prezime, String email, TipPacijenta tipPacijenta) {
-//        this.idPacijent = idPacijent;
-//        this.ime = ime;
-//        this.prezime = prezime;
-//        this.email = email;
-//        this.tipPacijenta = tipPacijenta;
-        setIdPacijent(idPacijent);
-        setIme(ime);
-        setPrezime(prezime);
-        setEmail(email);
-        setTipPacijenta(tipPacijenta);
+        this.idPacijent = idPacijent;
+        this.ime = ime;
+        this.prezime = prezime;
+        this.email = email;
+        this.tipPacijenta = tipPacijenta;
+//        setIdPacijent(idPacijent);
+//        setIme(ime);
+//        setPrezime(prezime);
+//        setEmail(email);
+//        setTipPacijenta(tipPacijenta);
     }
 
     /**

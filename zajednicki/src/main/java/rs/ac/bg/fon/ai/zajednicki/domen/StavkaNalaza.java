@@ -61,14 +61,14 @@ public class StavkaNalaza implements ApstraktniDomenskiObjekat {
      * @throws java.lang.NullPointerException ako je terapija ili nalaz null.
      */
     public StavkaNalaza(int rb, double cena, Terapija terapija, Nalaz nalaz) {
-//        this.rb = rb;
-//        this.cena = cena;
-//        this.terapija = terapija;
-//        this.nalaz = nalaz;
-        setRb(rb);
-        setCena(cena);
-        setTerapija(terapija);
-        setNalaz(nalaz);
+        this.rb = rb;
+        this.cena = cena;
+        this.terapija = terapija;
+        this.nalaz = nalaz;
+//        setRb(rb);
+//        setCena(cena);
+//        setTerapija(terapija);
+//        setNalaz(nalaz);
     }
 
     /**

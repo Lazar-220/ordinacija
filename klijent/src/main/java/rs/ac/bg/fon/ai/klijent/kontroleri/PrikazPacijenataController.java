@@ -160,20 +160,25 @@ public class PrikazPacijenataController {
 
             private void filtriraj(ActionEvent e) {
                 if(ppf.getjTextFieldIme().getText().isEmpty()&&ppf.getjTextFieldPrezime().getText().isEmpty()&&
-                         ppf.getjTextFieldEmail().getText().isEmpty()&&ppf.getjComboBoxTipPacijenta().getSelectedIndex()==0){
-                        
+                         ppf.getjTextFieldEmail().getText().isEmpty()&&ppf.getjComboBoxTipPacijenta().getSelectedIndex()<=0){
+                        System.out.println("to");
                     JOptionPane.showMessageDialog(ppf, "Unesite bar jedan kriterijum za pretrazivanje.", "Greska", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
+                System.out.println(ppf.getjTextFieldIme().getText());
+                System.out.println(ppf.getjTextFieldPrezime().getText());
+                System.out.println(ppf.getjTextFieldEmail().getText());
+                System.out.println(ppf.getjComboBoxTipPacijenta().getSelectedIndex());
                 List<Pacijent>lista=Komunikacija.getInstance().vratiPacijente();
                 ModelTabelePacijent model=new ModelTabelePacijent(lista);
                 
                 String ime=ppf.getjTextFieldIme().getText();
                 String prezime=ppf.getjTextFieldPrezime().getText();
                 String email=ppf.getjTextFieldEmail().getText();
-                Pacijent p=new Pacijent(-1, ime, prezime, email, null);
                 TipPacijenta tp=(TipPacijenta) ppf.getjComboBoxTipPacijenta().getSelectedItem();
-                p.setTipPacijenta(tp);
+                Pacijent p=new Pacijent(-1, ime, prezime, email, tp);
+                
+                
                 
                 if(tp==null){
                     lista=model.vratiFiltriranuListu(p);

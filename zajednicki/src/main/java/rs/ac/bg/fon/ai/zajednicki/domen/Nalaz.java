@@ -66,16 +66,24 @@ public class Nalaz implements ApstraktniDomenskiObjekat {
      * @param listaStavki lista stavki koje pripadaju nalazu
      */
     public Nalaz(int idNalaz, Date datumIzdavanja, String opisNalaza, double ukupnaCena, Fizijatar fizijatar, Pacijent pacijent, List<StavkaNalaza> listaStavki) {
-        setIdNalaz(idNalaz);
-        setDatumIzdavanja(datumIzdavanja);
-        setOpisNalaza(opisNalaza);
-        setUkupnaCena(ukupnaCena);
-        setFizijatar(fizijatar);
-        setPacijent(pacijent);
-        setListaStavki(listaStavki);
+//        setIdNalaz(idNalaz);
+//        setDatumIzdavanja(datumIzdavanja);
+//        setOpisNalaza(opisNalaza);
+//        setUkupnaCena(ukupnaCena);
+//        setFizijatar(fizijatar);
+//        setPacijent(pacijent);
+//        setListaStavki(listaStavki);
+    	this.idNalaz = idNalaz;
+		this.datumIzdavanja = datumIzdavanja;
+		this.opisNalaza = opisNalaza;
+		this.ukupnaCena = ukupnaCena;
+		this.fizijatar = fizijatar;
+		this.pacijent = pacijent;
+		this.listaStavki = listaStavki;
     }
+    
 
-    /**
+	/**
      * Vraca ID nalaza.
      * 
      * @return idNalaz

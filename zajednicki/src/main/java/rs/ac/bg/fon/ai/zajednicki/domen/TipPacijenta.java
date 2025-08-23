@@ -53,12 +53,12 @@ public class TipPacijenta implements ApstraktniDomenskiObjekat {
      * @throws java.lang.NullPointerException ako je starosna dob ili pol null.
      */
     public TipPacijenta(int idTipPacijenta, StarosnaDob starosnaDob, Pol pol) {
-//        this.idTipPacijenta = idTipPacijenta;
-//        this.starosnaDob = starosnaDob;
-//        this.pol = pol;
-    	setIdTipPacijenta(idTipPacijenta);
-    	setPol(pol);
-    	setStarosnaDob(starosnaDob);
+        this.idTipPacijenta = idTipPacijenta;
+        this.starosnaDob = starosnaDob;
+        this.pol = pol;
+//    	setIdTipPacijenta(idTipPacijenta);
+//    	setPol(pol);
+//    	setStarosnaDob(starosnaDob);
     }
 
     /**

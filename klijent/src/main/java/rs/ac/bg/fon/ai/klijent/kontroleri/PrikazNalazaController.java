@@ -177,6 +177,7 @@ public class PrikazNalazaController {
                 pnf.getjTextFieldImePacijenta().setText("");
                 pnf.getjTextFieldPrezimePacijenta().setText("");
                 pnf.getjTextFieldUkupnaCena().setText("");
+                izabraniNalaz=null;
             }
         });
     }

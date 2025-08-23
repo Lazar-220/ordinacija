@@ -47,12 +47,12 @@ public class Specijalizacija implements ApstraktniDomenskiObjekat {
      * @param institucija Institucija gde je obavljena specijalizacija. Ne sme biti null niti prazan string.
      */
     public Specijalizacija(int idSpecijalizacija, String naziv, String institucija) {
-//      this.idSpecijalizacija = idSpecijalizacija;
-//      this.naziv = naziv;
-//      this.institucija = institucija;
-    	setIdSpecijalizacija(idSpecijalizacija);
-        setNaziv(naziv);
-        setInstitucija(institucija);
+      this.idSpecijalizacija = idSpecijalizacija;
+      this.naziv = naziv;
+      this.institucija = institucija;
+//    	setIdSpecijalizacija(idSpecijalizacija);
+//        setNaziv(naziv);
+//        setInstitucija(institucija);
     }
 
     /**
