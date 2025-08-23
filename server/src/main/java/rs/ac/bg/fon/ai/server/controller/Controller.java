@@ -76,7 +76,7 @@ public class Controller {
     public Fizijatar login(Fizijatar ulogovani) throws Exception {
         if(onlineUseri.contains(ulogovani)){
             Fizijatar f=new Fizijatar(1, null, null, null, null);
-            return f; // posto je vec ulogovan da na neki nacin kazemo to klijentu...
+            return f; // Posto je vec ulogovan da na neki nacin kazemo to klijentu.
             
         }
         LoginOperacija operacija=new LoginOperacija();
