@@ -22,24 +22,41 @@ public class UcitajStavkeNalaza extends ApstraktnaGenerickaOperacija {
     
     @Override
     protected void preduslovi(Object param) throws Exception {
-        if (param == null || !(param instanceof Nalaz)) {
-            try {
-                throw new Exception("UCITAVANJE STAVKI NALAZA NIJE USPELO");
-            } catch (Exception ex) {
-                Logger.getLogger(ObrisiTerapiju.class.getName()).log(Level.SEVERE, null, ex);
-            }
+
+        
+        if(param == null) {
+        	
+        	throw new NullPointerException("UCITAVANJE STAVKI NALAZA NIJE USPELO, OBJEKAT UNET ZA PARAMETAR JE NULL");
+            
+        }
+    	if (!(param instanceof Nalaz)) {
+            
+    		throw new ClassCastException("UCITAVANJE STAVKI NALAZA NIJE USPELO, POGRESAN TIP OBJEKTA JE UNET ZA PARAMETAR");
+            
         }
     }
+    
 
-    @Override
+    public UcitajStavkeNalaza() {
+		super();
+	}
+
+	public UcitajStavkeNalaza(boolean autoCommit) {
+		super(autoCommit);
+	}
+
+
+	@Override
     protected void izvrsiOperaciju(Object objekat, String kljuc) {
         try {
             if(((Nalaz)objekat).getIdNalaz()==0){
-                String uslov=" join terapija on terapija_id=idTerapija join nalaz on nalaz_id=idNalaz";
+
+                String uslov=" join terapija on terapija_id=idTerapija join nalaz on nalaz_id=idNalaz order by rb asc";
                 lista=broker.getAll(new StavkaNalaza(), uslov);
                 return;
             }
-            String uslov=" join terapija on terapija_id=idTerapija join nalaz on nalaz_id=idNalaz where nalaz_id="+ ((Nalaz)objekat).getIdNalaz();
+            String uslov=" join terapija on terapija_id=idTerapija join nalaz on nalaz_id=idNalaz where nalaz_id="+ ((Nalaz)objekat).getIdNalaz()+" order by rb asc";
+
             lista=broker.getAll(new StavkaNalaza(), uslov);
         } catch (Exception ex) {
             Logger.getLogger(UcitajStavkeNalaza.class.getName()).log(Level.SEVERE, null, ex);
@@ -50,8 +67,9 @@ public class UcitajStavkeNalaza extends ApstraktnaGenerickaOperacija {
         return lista;
     }
 
-    public void setLista(List<StavkaNalaza> lista) {
-        this.lista = lista;
-    }
+//    public void setLista(List<StavkaNalaza> lista) {
+//        this.lista = lista;
+//    }
+
     
 }

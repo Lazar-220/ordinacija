@@ -57,14 +57,14 @@ public class Fizijatar_specijalista implements ApstraktniDomenskiObjekat {
      * 
      */
     public Fizijatar_specijalista(int idSertifikat, Fizijatar fizijatar, Specijalizacija specijalizacija, Date datumIzdavanja) {
-//        this.idSertifikat = idSertifikat;
-//        this.fizijatar = fizijatar;
-//        this.specijalizacija = specijalizacija;
-//        this.datumIzdavanja = datumIzdavanja;
-    	setIdSertifikat(idSertifikat);
-    	setFizijatar(fizijatar);
-    	setSpecijalizacija(specijalizacija);
-    	setDatumIzdavanja(datumIzdavanja);
+        this.idSertifikat = idSertifikat;
+        this.fizijatar = fizijatar;
+        this.specijalizacija = specijalizacija;
+        this.datumIzdavanja = datumIzdavanja;
+//    	setIdSertifikat(idSertifikat);
+//    	setFizijatar(fizijatar);
+//    	setSpecijalizacija(specijalizacija);
+//    	setDatumIzdavanja(datumIzdavanja);
     }
 
     

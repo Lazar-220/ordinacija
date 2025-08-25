@@ -297,7 +297,9 @@ public class ObradaKlijentskihZahteva extends Thread {
                     break;
                 case OBRISI_FIZIJATRA_SPECIJALIZACIJU:
                     try {
-                        boolean uspehObrisiFS=Controller.getInstance().obrisiFizijatarSpecijalizacije((Fizijatar)zahtev.getParametar());
+
+                        boolean uspehObrisiFS=Controller.getInstance().obrisiFizijatarSpecijalizacije(zahtev.getParametar());
+
                         if(uspehObrisiFS==true){
                             odgovor.setOdgovor(null);
                         }else{

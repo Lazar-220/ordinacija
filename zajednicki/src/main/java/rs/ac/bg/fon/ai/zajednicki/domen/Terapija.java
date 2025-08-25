@@ -58,15 +58,15 @@ public class Terapija implements ApstraktniDomenskiObjekat {
      * @throws java.lang.NullPointerException ako je naziv ili opis null.
      */
     public Terapija(int idTerapija, String naziv, String opis, double cena) {
-//        this.idTerapija = idTerapija;
-//        this.naziv = naziv;
-//        this.opis = opis;
-//        this.cena = cena;
+        this.idTerapija = idTerapija;
+        this.naziv = naziv;
+        this.opis = opis;
+        this.cena = cena;
 
-        setIdTerapija(idTerapija);
-        setNaziv(naziv);
-        setOpis(opis);
-        setCena(cena);
+//        setIdTerapija(idTerapija);
+//        setNaziv(naziv);
+//        setOpis(opis);
+//        setCena(cena);
     }
 
     /**

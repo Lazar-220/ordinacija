@@ -14,24 +14,50 @@ import java.util.logging.Logger;
  * @author milos
  */
 public class ObrisiPacijenta extends ApstraktnaGenerickaOperacija {
+
+	
     private boolean uspeh=true;
 
-    public boolean isUspeh() {
+    
+    public ObrisiPacijenta() {
+		super();
+	}
+    
+
+	public ObrisiPacijenta(boolean autoCommit) {
+		super(autoCommit);
+	}
+
+
+	public boolean isUspeh() {
         return uspeh;
     }
 
-    public void setUspeh(boolean uspeh) {
-        this.uspeh = uspeh;
-    }
+//    public void setUspeh(boolean uspeh) {
+//        this.uspeh = uspeh;
+//    }
     
     @Override
     protected void preduslovi(Object param) throws Exception {
-        if (param == null || !(param instanceof Pacijent)) {
-            try {
-                throw new Exception("BRISANJE PACIJENTA NIJE USPELO");
-            } catch (Exception ex) {
-                Logger.getLogger(ObrisiTerapiju.class.getName()).log(Level.SEVERE, null, ex);
-            }
+    	if(param == null) {
+    		
+          throw new NullPointerException("BRISANJE PACIJENTA NIJE USPELO, OBJEKAT UNET ZA PARAMETAR JE NULL");
+            
+    	}
+        if (!(param instanceof Pacijent)) {
+            
+           throw new ClassCastException("BRISANJE PACIJENTA NIJE USPELO, POGRESAN TIP OBJEKTA JE UNET ZA PARAMETAR");
+            
+        }
+        
+        if(((Pacijent)param).getIme()==null||((Pacijent)param).getIme().isEmpty()||
+        		((Pacijent)param).getPrezime()==null||((Pacijent)param).getPrezime().isEmpty()||
+        		((Pacijent)param).getEmail()==null||((Pacijent)param).getEmail().isEmpty()||
+        		((Pacijent)param).getTipPacijenta()==null) {
+        	
+           throw new IllegalArgumentException("BRISANJE PACIJENTA NIJE USPELO, OBJEKAT UNET ZA PARAMETAR IMA NULL VREDNOSTI");
+            
+
         }
     }
 

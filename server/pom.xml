@@ -7,10 +7,15 @@
   </parent>
   <artifactId>server</artifactId>
   <dependencies>
-  	<dependency>
-  		<groupId>rs.ac.bg.fon.ai</groupId>
-  		<artifactId>zajednicki</artifactId>
-  		<version>0.0.1</version>
-  	</dependency>
+
+
+
+  <dependency>
+  	<groupId>rs.ac.bg.fon.ai</groupId>
+  	<artifactId>zajednicki</artifactId>
+  	<version>0.0.1</version>
+  </dependency>
+
+
   </dependencies>
 </project>

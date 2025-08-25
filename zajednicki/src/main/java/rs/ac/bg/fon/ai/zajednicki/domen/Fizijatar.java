@@ -59,7 +59,7 @@ public class Fizijatar implements ApstraktniDomenskiObjekat {
     }
 
     /**
-     * Inicijalizuje objekat sa unetim id-em, imenom, prezimenom, korisničkim imenom i šifrom.
+     * Inicijalizuje objekat sa unetim Id-em, imenom, prezimenom, korisničkim imenom i šifrom.
      * 
      * @param idFizijatra Id fizijatra koji se unosi u objekat. Id ne sme biti manji od 0.
      * @param ime Ime fizijatra koje se unosi u objekat. Ime ne sme biti null niti prazno.
@@ -68,16 +68,16 @@ public class Fizijatar implements ApstraktniDomenskiObjekat {
      * @param sifra Šifra fizijatra koja se unosi u objekat. Šifra ne sme biti null niti prazna.
      */
     public Fizijatar(int idFizijatra, String ime, String prezime, String korisnickoIme, String sifra) {
-//        this.idFizijatra = idFizijatra;
-//        this.ime = ime;
-//        this.prezime = prezime;
-//        this.korisnickoIme = korisnickoIme;
-//        this.sifra = sifra;
-    	setIdFizijatra(idFizijatra);
-    	setIme(ime);
-    	setPrezime(prezime);
-    	setKorisnickoIme(korisnickoIme);
-    	setSifra(sifra);
+        this.idFizijatra = idFizijatra;
+        this.ime = ime;
+        this.prezime = prezime;
+        this.korisnickoIme = korisnickoIme;
+        this.sifra = sifra;
+//    	setIdFizijatra(idFizijatra);
+//    	setIme(ime);
+//    	setPrezime(prezime);
+//    	setKorisnickoIme(korisnickoIme);
+//    	setSifra(sifra);
     }
     
     /**

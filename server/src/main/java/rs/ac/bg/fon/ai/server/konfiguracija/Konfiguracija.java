@@ -20,7 +20,11 @@ import java.util.logging.Logger;
 public class Konfiguracija {
     private static Konfiguracija instance;
     private Properties konfiguracija;
-    private String putanja="C:\\PS_nakonBlokade\\Sem_PS\\1_SEM_Server_\\config\\config.properties";
+
+
+    private String putanja="D:\\Desktop\\NaprednoProgramiranje1\\server\\config\\config.properties";
+
+
 
     public static Konfiguracija getInstance() {
         if(instance==null){

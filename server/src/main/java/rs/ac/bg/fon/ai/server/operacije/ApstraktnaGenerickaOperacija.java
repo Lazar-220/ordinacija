@@ -18,8 +18,16 @@ import rs.ac.bg.fon.ai.server.repository.db.impl.DbRepositoryGeneric;
 public abstract class ApstraktnaGenerickaOperacija {
     protected final Repository broker;
 
-    public ApstraktnaGenerickaOperacija() {
+
+    protected final boolean autoCommit;
+
+    protected ApstraktnaGenerickaOperacija() {       //poziva parametarski konstruktor i prosledjuje true kao parametar
+        this(true);
+    }
+
+    protected ApstraktnaGenerickaOperacija(boolean autoCommit) {
         this.broker = new DbRepositoryGeneric();
+        this.autoCommit = autoCommit;
     }
     
     public final void izvrsi(Object objekat,String kljuc) throws Exception {
@@ -27,7 +35,9 @@ public abstract class ApstraktnaGenerickaOperacija {
             preduslovi(objekat);
             zapocniTransakciju();
             izvrsiOperaciju(objekat,kljuc);
-            potvrdiTransakciju();
+            if (autoCommit==true) {
+                potvrdiTransakciju();
+            }
         } catch (Exception e) {
             ponistiTransakciju();
             throw e;
@@ -38,7 +48,7 @@ public abstract class ApstraktnaGenerickaOperacija {
 
     protected abstract void preduslovi(Object param)throws Exception;
     
-    private void zapocniTransakciju() {
+    private void zapocniTransakciju() {             //
         try {
             ((DbRepository)broker).connect();
         } catch (Exception ex) {
@@ -46,16 +56,17 @@ public abstract class ApstraktnaGenerickaOperacija {
         }
     }
     
-    protected abstract void izvrsiOperaciju(Object objekat,String kljuc);
+    protected abstract void izvrsiOperaciju(Object objekat,String kljuc) throws Exception;
     
-    private void potvrdiTransakciju() {
+    private void potvrdiTransakciju() {           //
         try {
             ((DbRepository)broker).commit();
         } catch (Exception ex) {
             Logger.getLogger(ApstraktnaGenerickaOperacija.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    private void ponistiTransakciju() {
+    private void ponistiTransakciju() {           //
+
         try {
             ((DbRepository)broker).rollback();
         } catch (Exception ex) {

@@ -6,6 +6,9 @@ package rs.ac.bg.fon.ai.server.operacije;
 
 import rs.ac.bg.fon.ai.zajednicki.domen.Nalaz;
 import rs.ac.bg.fon.ai.zajednicki.domen.StavkaNalaza;
+
+import rs.ac.bg.fon.ai.zajednicki.domen.Terapija;
+
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,22 +25,43 @@ public class DodajNalaz extends ApstraktnaGenerickaOperacija {
         return uspeh;
     }
 
-    public void setUspeh(boolean uspeh) {
-        this.uspeh = uspeh;
-    }
+//    public void setUspeh(boolean uspeh) {
+//        this.uspeh = uspeh;
+//    }
+    public DodajNalaz() {
+		super();
+	}
     
-    @Override
+    public DodajNalaz(boolean autoCommit) {
+		super(autoCommit);
+	}
+
+	@Override
     protected void preduslovi(Object param) throws Exception {
-        if (param == null || !(param instanceof Nalaz)) {
-            try {
-                throw new Exception("DODAVANJE NALAZA NIJE USPELO");
-            } catch (Exception ex) {
-                Logger.getLogger(ObrisiTerapiju.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        
+        if(param == null) {
+        	
+        	throw new NullPointerException("DODAVANJE NALAZA NIJE USPELO, OBJEKAT UNET ZA PARAMETAR JE NULL");
+            
         }
+    	if (!(param instanceof Nalaz)) {
+            
+    		throw new ClassCastException("DODAVANJE NALAZA NIJE USPELO, POGRESAN TIP OBJEKTA JE UNET ZA PARAMETAR");
+            
+        }
+    	if(((Nalaz)param).getOpisNalaza()==null||((Nalaz)param).getOpisNalaza().isEmpty()||
+          		((Nalaz)param).getUkupnaCena()<=0||
+          		((Nalaz)param).getFizijatar()==null||((Nalaz)param).getPacijent()==null||
+          		((Nalaz)param).getListaStavki()==null||((Nalaz)param).getListaStavki().isEmpty()||
+          		((Nalaz)param).getDatumIzdavanja()==null) {
+          	
+             throw new IllegalArgumentException("DODAVANJE NALAZA NIJE USPELO, OBJEKAT UNET ZA PARAMETAR IMA NULL VREDNOSTI");
+              
+          }
     }
 
-    @Override
+
+	@Override
     protected void izvrsiOperaciju(Object objekat, String kljuc) {
         try {
             Nalaz nalaz=(Nalaz) objekat;
