@@ -104,6 +104,7 @@ public class PrikazSpecijalizacijaController {
                     if(provera==JOptionPane.NO_OPTION||provera==JOptionPane.CLOSED_OPTION){
                         return;
                     }
+                    Komunikacija.getInstance().obrisiFizijatarSpecijalizacija(s);
                     Komunikacija.getInstance().obrisiSpecijalizaciju(s);
                 }catch(Exception ex){
                     JOptionPane.showMessageDialog(psf, "Greska pri brisanju.", "Greska", JOptionPane.ERROR_MESSAGE);

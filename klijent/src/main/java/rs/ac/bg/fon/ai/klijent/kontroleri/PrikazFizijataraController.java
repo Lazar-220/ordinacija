@@ -77,7 +77,7 @@ public class PrikazFizijataraController {
                     if(provera==JOptionPane.NO_OPTION||provera==JOptionPane.CLOSED_OPTION){
                         return;
                     }
-                    Komunikacija.getInstance().obrisiFizijatarSpecijalizacija(f);
+                    Komunikacija.getInstance().obrisiFizijatarSpecijalizacija1(f);
                     Komunikacija.getInstance().obrisiFizijatra(f);
                 }catch(Exception ex){
                     JOptionPane.showMessageDialog(pff, "Sistem ne može da obriše fizijatra.", "Greska", JOptionPane.ERROR_MESSAGE);

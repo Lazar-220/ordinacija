@@ -459,8 +459,8 @@ public class Komunikacija {
         }
     }
 
-    public void obrisiFizijatarSpecijalizacija(Fizijatar f) throws Exception {
-        Zahtev z=new Zahtev(Operacija.OBRISI_FIZIJATRA_SPECIJALIZACIJU, f);
+    public void obrisiFizijatarSpecijalizacija(Specijalizacija specijalizacija) throws Exception {
+        Zahtev z=new Zahtev(Operacija.OBRISI_FIZIJATRA_SPECIJALIZACIJU, specijalizacija);
         posiljalac.posalji(z);
         
         Odgovor o=(Odgovor) primalac.primi();
@@ -468,6 +468,16 @@ public class Komunikacija {
             throw new Exception();
         }
     }
+
+	public void obrisiFizijatarSpecijalizacija1(Fizijatar f) throws Exception {
+		Zahtev z=new Zahtev(Operacija.OBRISI_FIZIJATRA_SPECIJALIZACIJU, f);
+        posiljalac.posalji(z);
+        
+        Odgovor o=(Odgovor) primalac.primi();
+        if(o.getOdgovor()!=null){
+            throw new Exception();
+        }
+	}
 
     
 

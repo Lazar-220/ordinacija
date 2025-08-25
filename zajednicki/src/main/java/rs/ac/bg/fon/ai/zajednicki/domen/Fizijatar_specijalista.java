@@ -226,9 +226,9 @@ public class Fizijatar_specijalista implements ApstraktniDomenskiObjekat {
         while(rs.next()){
             int id=rs.getInt("fizijatar_specijalista.idSertifikat");
             Date datum=new Date(rs.getDate("fizijatar_specijalista.datumIzdavanja").getTime());
-           // Specijalizacija s=new Specijalizacija(rs.getInt("specijalizacija.idSpecijalizacija"), rs.getString("specijalizacija.naziv"), rs.getString("specijalizacija.institucija"));
+            Specijalizacija s=new Specijalizacija(rs.getInt("specijalizacija.idSpecijalizacija"), rs.getString("specijalizacija.naziv"), rs.getString("specijalizacija.institucija"));
             Fizijatar f=new Fizijatar(rs.getInt("fizijatar.idFizijatra"), rs.getString("fizijatar.ime"), rs.getString("fizijatar.prezime"), rs.getString("fizijatar.korisnickoIme"), rs.getString("fizijatar.sifra"));
-            Fizijatar_specijalista fs=new Fizijatar_specijalista(id, f, new Specijalizacija(), datum);
+            Fizijatar_specijalista fs=new Fizijatar_specijalista(id, f, s, datum);
             lista.add(fs);
         }
         

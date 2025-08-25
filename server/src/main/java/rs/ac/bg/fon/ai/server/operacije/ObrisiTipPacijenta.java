@@ -4,6 +4,7 @@
  */
 package rs.ac.bg.fon.ai.server.operacije;
 
+import rs.ac.bg.fon.ai.zajednicki.domen.Pacijent;
 import rs.ac.bg.fon.ai.zajednicki.domen.Terapija;
 import rs.ac.bg.fon.ai.zajednicki.domen.TipPacijenta;
 import java.util.List;
@@ -16,16 +17,38 @@ import java.util.logging.Logger;
  */
 public class ObrisiTipPacijenta extends ApstraktnaGenerickaOperacija {
 
+	
     
-    @Override
+    public ObrisiTipPacijenta() {
+		super();
+	}
+    
+
+	public ObrisiTipPacijenta(boolean autoCommit) {
+		super(autoCommit);
+	}
+
+
+	@Override
     protected void preduslovi(Object param) throws Exception {
-        if (param == null || !(param instanceof TipPacijenta)) {
-            try {
-                throw new Exception("BRISANJE TIPA PACIJENTA NIJE USPELO");
-            } catch (Exception ex) {
-                Logger.getLogger(ObrisiTerapiju.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+        
+        
+        if(param == null) {
+    		
+            throw new NullPointerException("BRISANJE TIPA PACIJENTA NIJE USPELO, OBJEKAT UNET ZA PARAMETAR JE NULL");
+              
+      	}
+          if (!(param instanceof TipPacijenta)) {
+              
+             throw new ClassCastException("BRISANJE TIPA PACIJENTA NIJE USPELO, POGRESAN TIP OBJEKTA JE UNET ZA PARAMETAR");
+              
+          }
+          
+          if(((TipPacijenta)param).getPol()==null||((TipPacijenta)param).getStarosnaDob()==null) {
+          	
+             throw new IllegalArgumentException("BRISANJE TIPA PACIJENTA NIJE USPELO, OBJEKAT UNET ZA PARAMETAR IMA NULL VREDNOSTI");
+              
+          }
     }
 
     @Override
