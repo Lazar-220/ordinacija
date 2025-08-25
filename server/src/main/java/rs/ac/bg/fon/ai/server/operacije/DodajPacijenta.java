@@ -21,7 +21,17 @@ public class DodajPacijenta extends ApstraktnaGenerickaOperacija {
         return uspeh;
     }
 
-    public void setUspeh(boolean uspeh) {
+    
+    public DodajPacijenta() {
+		super();
+	}
+
+	public DodajPacijenta(boolean autoCommit) {
+		super(autoCommit);
+	}
+
+
+	public void setUspeh(boolean uspeh) {
         this.uspeh = uspeh;
     }
     @Override

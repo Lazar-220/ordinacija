@@ -5,6 +5,8 @@
 package rs.ac.bg.fon.ai.server.operacije;
 
 import rs.ac.bg.fon.ai.zajednicki.domen.Fizijatar;
+import rs.ac.bg.fon.ai.zajednicki.domen.Pacijent;
+
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,27 +22,47 @@ public class LoginOperacija extends ApstraktnaGenerickaOperacija {
     public Fizijatar getFizijatar() {
         return fizijatar;
     }
-
-    public void setFizijatar(Fizijatar fizijatar) {
-        this.fizijatar = fizijatar;
-    }
     
-    @Override
-    protected void preduslovi(Object objekat) throws Exception {
-        if (objekat == null || !(objekat instanceof Fizijatar)) {
-            try {
-                throw new Exception("PRIJAVLJIVANJE FIZIJATRA NA SISTEM NIJE USPELO");
-            } catch (Exception ex) {
-                Logger.getLogger(ObrisiTerapiju.class.getName()).log(Level.SEVERE, null, ex);
-            }
+    
+
+    public LoginOperacija() {
+		super();
+	}
+    
+    public LoginOperacija(boolean autoCommit) {
+		super(autoCommit);
+	}
+
+
+
+	@Override
+    protected void preduslovi(Object param) throws Exception {
+        
+		if(param == null) {
+        	
+        	throw new NullPointerException("PRIJAVLJIVANJE FIZIJATRA NA SISTEM NIJE USPELO, OBJEKAT UNET ZA PARAMETAR JE NULL");
+            
         }
+			
+          if (!(param instanceof Fizijatar)) {
+              
+             throw new ClassCastException("PRIJAVLJIVANJE FIZIJATRA NA SISTEM NIJE USPELO, POGRESAN TIP OBJEKTA JE UNET ZA PARAMETAR");
+              
+          }
+          
+          if(((Fizijatar)param).getKorisnickoIme()==null||((Fizijatar)param).getKorisnickoIme().isEmpty()||
+          		((Fizijatar)param).getSifra()==null||((Fizijatar)param).getSifra().isEmpty()) {
+          	
+             throw new IllegalArgumentException("PRIJAVLJIVANJE FIZIJATRA NA SISTEM NIJE USPELO, OBJEKAT UNET ZA PARAMETAR IMA NULL VREDNOSTI");
+              
+          }
     }
 
     
 
     @Override
-    protected void izvrsiOperaciju(Object param, String kljuc){
-        try {
+    protected void izvrsiOperaciju(Object param, String kljuc) throws Exception{
+       
             List<Fizijatar>sviFizijatri=broker.getAll((Object)param, null);
             
             for(Fizijatar f:sviFizijatri){
@@ -51,9 +73,9 @@ public class LoginOperacija extends ApstraktnaGenerickaOperacija {
             }
             fizijatar=null;
             
-        } catch (Exception ex) {
-            Logger.getLogger(LoginOperacija.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            throw new IllegalArgumentException();
+            
+
     }
 
     

@@ -251,10 +251,10 @@ public class Controller {
         return operacija.isUspeh();
     }
 
-    public boolean obrisiFizijatarSpecijalizacije(Fizijatar fizijatar) throws Exception {
+    public boolean obrisiFizijatarSpecijalizacije(Object object) throws Exception {
         ObrisiFizijatarSpecijalizaciju operacija=new ObrisiFizijatarSpecijalizaciju();
         
-            operacija.izvrsi(fizijatar, null);
+            operacija.izvrsi(object, null);
         return operacija.isUspeh();
     }
 

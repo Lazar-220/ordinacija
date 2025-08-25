@@ -20,16 +20,27 @@ public class UcitajNalaze extends ApstraktnaGenerickaOperacija {
     List<Nalaz>lista=new ArrayList<>();
 
     
-    
-    
-    @Override
+    public UcitajNalaze() {
+		super();
+	}
+
+	public UcitajNalaze(boolean autoCommit) {
+		super(autoCommit);
+	}
+
+
+	@Override
     protected void preduslovi(Object param) throws Exception {
-        if (param == null || !(param instanceof Nalaz)) {
-            try {
-                throw new Exception("UCITAVANJE NALAZA NIJE USPELO");
-            } catch (Exception ex) {
-                Logger.getLogger(ObrisiTerapiju.class.getName()).log(Level.SEVERE, null, ex);
-            }
+    	
+        if(param == null) {
+        	
+        	throw new NullPointerException("UCITAVANJE NALAZA NIJE USPELO, OBJEKAT UNET ZA PARAMETAR JE NULL");
+            
+        }
+    	if (!(param instanceof Nalaz)) {
+            
+    		throw new ClassCastException("UCITAVANJE NALAZA NIJE USPELO, POGRESAN TIP OBJEKTA JE UNET ZA PARAMETAR");
+            
         }
     }
 
@@ -46,7 +57,4 @@ public class UcitajNalaze extends ApstraktnaGenerickaOperacija {
         return lista;
     }
 
-    public void setLista(List<Nalaz> lista) {
-        this.lista = lista;
-    }
 }
