@@ -21,7 +21,9 @@ public class Konfiguracija {
     private static Konfiguracija instance;
     private Properties konfiguracija;
 
+
     private String putanja="D:\\Desktop\\NaprednoProgramiranje1\\server\\config\\config.properties";
+
 
 
     public static Konfiguracija getInstance() {

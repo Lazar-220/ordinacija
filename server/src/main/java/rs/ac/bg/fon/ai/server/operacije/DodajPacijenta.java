@@ -21,6 +21,7 @@ public class DodajPacijenta extends ApstraktnaGenerickaOperacija {
         return uspeh;
     }
 
+
     
     public DodajPacijenta() {
 		super();
@@ -31,9 +32,10 @@ public class DodajPacijenta extends ApstraktnaGenerickaOperacija {
 	}
 
 
-	public void setUspeh(boolean uspeh) {
-        this.uspeh = uspeh;
-    }
+//	public void setUspeh(boolean uspeh) {
+//
+//        this.uspeh = uspeh;
+//    }
     @Override
     protected void preduslovi(Object param) throws Exception {
         if (param == null || !(param instanceof Pacijent)) {

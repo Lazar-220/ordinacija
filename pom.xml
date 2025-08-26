@@ -6,8 +6,10 @@
   <packaging>pom</packaging>
   <modules>
   	<module>zajednicki</module>
+
   	<module>klijent</module>
   	<module>server</module>
+
   </modules>
   <properties>
   	<maven.compiler.source>17</maven.compiler.source>

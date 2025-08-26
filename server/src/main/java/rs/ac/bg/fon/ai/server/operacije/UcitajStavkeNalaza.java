@@ -13,15 +13,39 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Klasa UcitajStavkeNalaza predstavlja konkretnu sistemsku operaciju koja služi za 
+ * učitavanje svih {@link StavkaNalaza} objekata povezanih sa datim {@link Nalaz}.
+ * <p>
+ * Nasleđuje apstraktnu klasu {@link ApstraktnaGenerickaOperacija} i implementira njene 
+ * apstraktne metode za definisanje preduslova i izvršavanje same operacije.
+ * </p>
  *
- * @author milos
+ * @author 
+ * Lazar Milosavljević
  */
 public class UcitajStavkeNalaza extends ApstraktnaGenerickaOperacija {
 
+	/**
+     * Lista svih stavki nalaza učitanih iz baze podataka.
+     */
     private List<StavkaNalaza>lista=new ArrayList<>();
     
+    /**
+     * Proverava ispravnost prosleđenog parametra pre izvršenja operacije.
+     * <p>
+     * Parametar mora biti instanca klase {@link Nalaz}.
+     * </p>
+     *
+     * @param param Objekat koji se validira pre učitavanja
+     * @throws java.lang.Exception ako je parametar:
+     * <ul>
+     *   <li>null</li>
+     *   <li>nije instanca klase Nalaz</li>
+     * </ul>
+     */
     @Override
     protected void preduslovi(Object param) throws Exception {
+
         
         if(param == null) {
         	
@@ -36,15 +60,43 @@ public class UcitajStavkeNalaza extends ApstraktnaGenerickaOperacija {
     }
     
 
+    /**
+     * Podrazumevani konstruktor.
+     * Kreira novu instancu objekta ove klase.
+     * <p>
+     * Poziva podrazumevani konstruktor nadklase {@link ApstraktnaGenerickaOperacija}.
+     * </p>
+     */
     public UcitajStavkeNalaza() {
 		super();
 	}
 
+    /**
+     * Parametrizovani konstruktor.
+     * Omogućava definisanje da li će operacija koristiti auto-commit režim.
+     * <p>
+     * Poziva konstruktor nadklase {@link ApstraktnaGenerickaOperacija} sa prosleđenom
+     * vrednošću parametra autoCommit.
+     * </p>
+     *
+     * @param autoCommit true ako je potrebno automatsko potvrđivanje transakcije, false inače
+     */
 	public UcitajStavkeNalaza(boolean autoCommit) {
 		super(autoCommit);
 	}
 
 
+	/**
+     * Izvršava operaciju učitavanja stavki nalaza iz baze podataka.
+     * <p>
+     * Ako {@link Nalaz} ima ID vrednost 0, učitavaju se sve stavke nalaza.
+     * U suprotnom, učitavaju se samo stavke koje pripadaju tom nalazu.
+     * Ako dođe do izuzetka tokom učitavanja, greška se loguje, a lista ostaje prazna.
+     * </p>
+     *
+     * @param objekat Objekat koji definiše uslove učitavanja (očekuje se {@link Nalaz})
+     * @param kljuc Dodatni parametar (nije korišćen u ovoj implementaciji)
+     */
 	@Override
     protected void izvrsiOperaciju(Object objekat, String kljuc) {
         try {
@@ -62,6 +114,11 @@ public class UcitajStavkeNalaza extends ApstraktnaGenerickaOperacija {
         }
     }
 
+	/**
+     * Vraća listu svih učitanih stavki nalaza.
+     *
+     * @return lista objekata tipa {@link StavkaNalaza}
+     */
     public List<StavkaNalaza> getLista() {
         return lista;
     }
@@ -69,5 +126,6 @@ public class UcitajStavkeNalaza extends ApstraktnaGenerickaOperacija {
 //    public void setLista(List<StavkaNalaza> lista) {
 //        this.lista = lista;
 //    }
+
     
 }

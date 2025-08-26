@@ -6,6 +6,7 @@ package rs.ac.bg.fon.ai.server.operacije;
 
 import rs.ac.bg.fon.ai.zajednicki.domen.Fizijatar;
 import rs.ac.bg.fon.ai.zajednicki.domen.Fizijatar_specijalista;
+
 import rs.ac.bg.fon.ai.zajednicki.domen.Specijalizacija;
 
 import java.util.ArrayList;
@@ -53,6 +54,7 @@ public class ObrisiFizijatarSpecijalizaciju extends ApstraktnaGenerickaOperacija
                 lista=broker.getAll(new Fizijatar_specijalista(), uslov);
         	}
             
+
             for(Fizijatar_specijalista fS:lista){
                 broker.delete(fS);
             }
