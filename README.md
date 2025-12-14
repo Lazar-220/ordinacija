@@ -1,4 +1,4 @@
-Kod ove aplikacije je pisan u Eclipse-u. Naziv baze, koja je dostupna za import u database folderu, koji server očekuje je ordinacija_ecl.
+Kod ove aplikacije je pisan u Eclipse-u. Naziv baze, koja je dostupna za import u database folderu, koji server očekuje je ordinacija_og.
 Aplikacija je sacinjena od java-maven module, dobar deo sistemskih operacija je testiran JUnit testovima i dokumentovan JavaDoc-om kao i sve domenske klase. 
 Testovi i dokumentacija su verzionisani git-om.
 
